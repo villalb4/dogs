@@ -112,7 +112,11 @@ main {
   width: 140px;
   padding: 18px 0 22px;
   border-radius: 12px;
-  box-shadow: 0px 4px 27px 0px #00000021;
+  box-shadow: 0px 4px 27px 0px #0000001c;
+  transition: all 0.3s ease;
+}
+.funciones:hover {
+  box-shadow: 0px 4px 27px 0px #00000035;
 }
 .icon {
   width: 63px;
