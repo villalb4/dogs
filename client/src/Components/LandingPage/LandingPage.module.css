@@ -1,0 +1,126 @@
+header {
+  position: absolute;
+  width: 100%;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+.logo {
+  font-family: 'Nunito';
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: var(--azul-oscuro);
+}
+.acceder {
+  font-family: 'Montserrat';
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5%;
+  color: var(--blanco);
+  background-color: var(--naranja);
+  border: none;
+  border-radius: 8px;
+  padding: 9px 21px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.acceder:hover {
+  background-color: var(--naranja-hover);
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+.main_left {
+  max-width: 405px;
+  margin-top: 200px;
+}
+.titulo {
+  font-family: 'Nunito';
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 55px;
+  letter-spacing: 0.5%;
+  color: var(--azul-oscuro);
+}
+.titulo_perro {
+  color: var(--naranja);
+}
+.sub_titulo {
+  font-family: 'Montserrat';
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gris-oscuro);
+  letter-spacing: 0.5%;
+  line-height: 20px;
+  max-width: 288px;
+  margin: 16px 0 38px 0;
+}
+.acceder_grande {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  font-family: 'Montserrat';
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+  border: none;
+  border-radius: 12px;
+  max-width: 195px;
+  padding: 15px 24px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.acceder_grande:hover {
+  gap: 20px;
+  background-color: var(--azul-oscuro-hover);
+}
+.arrow {
+  width: 13px;
+  margin-top: 2px;
+}
+
+.main_right {
+  max-width: 590px;
+  margin-right: 14px;
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1050px;
+  margin: 67px auto 50px auto;
+}
+.funciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  gap: 5px;
+  height: 140px;
+  width: 140px;
+  padding: 18px 0 22px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 27px 0px #00000021;
+}
+.icon {
+  width: 63px;
+}
+.funcion_desc {
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gris-oscuro);
+  max-width: 112px;
+}
