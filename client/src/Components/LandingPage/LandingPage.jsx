@@ -1,13 +1,14 @@
 import React from "react";
 import s from "./LandingPage.module.css";
-import hero_desktop from "../../images/hero-desktop.png"
-import arrow from "../../images/acc_arrow.svg"
+import hero_desktop from "../../images/hero-desktop.png";
+// import hero_desktop_responsive from "../../images/hero-desktop-responsive.png";
+import arrow from "../../images/acc_arrow.svg";
 // ----- icons -----
-import icon1 from "../../images/icons/dog.png"
-import icon2 from "../../images/icons/passport.png"
-import icon3 from "../../images/icons/photo-shoot.png"
-import icon4 from "../../images/icons/earth.png"
-import icon5 from "../../images/icons/bagpack.png"
+import icon1 from "../../images/icons/dog.png";
+import icon2 from "../../images/icons/passport.png";
+import icon3 from "../../images/icons/photo-shoot.png";
+import icon4 from "../../images/icons/earth.png";
+import icon5 from "../../images/icons/bagpack.png";
 
 function LandingPage() {
   return(
@@ -28,7 +29,7 @@ function LandingPage() {
         </div>
 
         <div className={s.main_right}>
-          <img className={s.hero} src={hero_desktop} alt="hero desktop" />
+          <img className={s.hero} src={hero_desktop} alt="hero" />
         </div>
       </main>
       {/* --- button --- */}
