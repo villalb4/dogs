@@ -29,6 +29,9 @@ module.exports = (sequelize) => {
         if(!value) return value;
         return value + ' years';
       }
+    },
+    image: {
+      type: DataTypes.STRING
     }
   }, {timestamps: false});
 };
