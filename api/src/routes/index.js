@@ -25,18 +25,20 @@ router.get('/dogs', async(req, res, next) => {
       }
     })
     
-    const dogDb = await Dog.findAll({include: [{model: Temperament}]});
+    const dogDb = await Dog.findAll({include: Temperament});
 
-    // const hola = dogDb.map(dog => {
-    //   return {
-    //     image: dog.image,
-    //     name: dog.name,
-    //     weight: dog.weight,
-    //     temperament: dog.temperament
-    //   }
-    // })
+    console.log("db:" ,dogDb)
 
-    const dogs = [...formateo, ...dogDb];
+    const hola = dogDb.map(dog => {
+      return {
+        image: dog.image,
+        name: dog.name,
+        weight: dog.weight,
+        temperament: dog.temperaments
+      }
+    })
+
+    const dogs = [...formateo, ...hola];
     
     res.json(dogs)
 
