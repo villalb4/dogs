@@ -20,12 +20,21 @@ router.get('/dogs', async(req, res, next) => {
       return {
         image: dog.image.url,
         name: dog.name,
-        peso: dog.height.metric,
+        weight: dog.height.metric,
         temperament: dog.temperament
       }
     })
     
     const dogDb = await Dog.findAll({include: [{model: Temperament}]});
+
+    // const hola = dogDb.map(dog => {
+    //   return {
+    //     image: dog.image,
+    //     name: dog.name,
+    //     weight: dog.weight,
+    //     temperament: dog.temperament
+    //   }
+    // })
 
     const dogs = [...formateo, ...dogDb];
     
@@ -35,6 +44,8 @@ router.get('/dogs', async(req, res, next) => {
     next(error)
   }
 })
+
+
 
 router.get('/temperaments', async(req, res)=> {
   try {
@@ -64,7 +75,7 @@ router.get('/temperaments', async(req, res)=> {
 
 
 router.post('/dogs', async(req, res, next) => {
-  const {name, height, weight} = req.body;
+  const {name, height, weight, temperament} = req.body;
 
   if(!name || !height || !weight) {
     return res
@@ -75,11 +86,15 @@ router.post('/dogs', async(req, res, next) => {
   try {
     const dog = await Dog.create(req.body)
 
-    // aca hay que agregar el join
+    let tempDb = await Temperament.findAll({
+      where: {name : temperament}
+    })
+
+    await dog.addTemperament(tempDb)
 
     return res
       .status(201)
-      .send(dog)
+      .send({msg: "Perro creado correctamente"})
   } catch (error) {
     next(error)
   }

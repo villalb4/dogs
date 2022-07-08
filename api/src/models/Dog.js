@@ -15,20 +15,20 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     height: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: false
     },
     weight: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     life_span: {
       type: DataTypes.INTEGER,
-      get() {
-        const value = this.getDataValue('life_span');
-        if(!value) return value;
-        return value + ' years';
-      }
+      // get() {
+      //   const value = this.getDataValue('life_span');
+      //   if(!value) return value;
+      //   return value + ' years';
+      // }
     },
     image: {
       type: DataTypes.STRING
