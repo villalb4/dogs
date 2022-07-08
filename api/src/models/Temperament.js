@@ -9,7 +9,8 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4
     },
     name: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      unique: true
     }
   }, {timestamps: false})
 }

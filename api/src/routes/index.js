@@ -51,9 +51,9 @@ router.get('/temperaments', async(req, res)=> {
 
     resultado = resultado.map(t => {return{name: t}})
 
-    const allTemps = await Temperament.bulkCreate(resultado)
+    await Temperament.bulkCreate(resultado)
 
-    res.send(allTemps)
+    res.send({msg: "Datos agregados correctamente"})
 
   } catch (error) {
     next(error)
