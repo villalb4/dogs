@@ -16,7 +16,7 @@ router.get('/dogs', async(req, res, next) => {
   try {
     const dogApi = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
     //formateando la api para traer solo los datos necesarios para la ruta pricipal
-    const formateo = dogApi.map(dog => {
+    const apiFormateo = dogApi.map(dog => {
       return {
         image: dog.image.url,
         name: dog.name,
@@ -29,7 +29,7 @@ router.get('/dogs', async(req, res, next) => {
 
     console.log("db:" ,dogDb)
 
-    const hola = dogDb.map(dog => {
+    const dbFormateo = dogDb.map(dog => {
       return {
         image: dog.image,
         name: dog.name,
@@ -38,7 +38,7 @@ router.get('/dogs', async(req, res, next) => {
       }
     })
 
-    const dogs = [...formateo, ...hola];
+    const dogs = [...apiFormateo, ...dbFormateo];
     
     res.json(dogs)
 
@@ -54,7 +54,7 @@ router.get('/temperaments', async(req, res)=> {
     const temperamentos = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
 
     const formateo = temperamentos.map(t => t.temperament)
-    const uniendo = formateo.filter(r => r != null).sort()
+    const uniendo = formateo.filter(r => r != null)
     .join().split(", ").join().split(",")
     // se borran los temperamentos duplicados
     let resultado = uniendo.reduce((a, e) => {
@@ -101,5 +101,11 @@ router.post('/dogs', async(req, res, next) => {
     next(error)
   }
 })
+
+
+// router.get('/dogs', async(req, res) => {
+//   const 
+// })
+
 
 module.exports = router;
