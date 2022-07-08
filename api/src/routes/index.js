@@ -14,9 +14,9 @@ const router = Router();
 
 router.get('/dogs', async(req, res, next) => {
   try {
-    const dogApi = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
+    const dogApi = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
     //formateando la api para traer solo los datos necesarios para la ruta pricipal
-    const formateo = dogApi.data.map(dog => {
+    const formateo = dogApi.map(dog => {
       return {
         image: dog.image.url,
         name: dog.name,
@@ -36,6 +36,33 @@ router.get('/dogs', async(req, res, next) => {
   }
 })
 
+router.get('/temperaments', async(req, res)=> {
+  try {
+    const temperamentos = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
+
+    const formateo = temperamentos.map(t => t.temperament)
+    const uniendo = formateo.filter(r => r != null).sort()
+    .join().split(", ").join().split(",")
+    // se borran los temperamentos duplicados
+    let resultado = uniendo.reduce((a, e) => {
+      if(!a.find(d => d == e)) a.push(e)
+      return a
+    }, []);
+
+    resultado = resultado.map(t => {return{name: t}})
+
+    const allTemps = await Temperament.bulkCreate(resultado)
+
+    res.send(allTemps)
+
+  } catch (error) {
+    next(error)
+  }
+})
+
+
+
+
 router.post('/dogs', async(req, res, next) => {
   const {name, height, weight} = req.body;
 
@@ -47,6 +74,9 @@ router.post('/dogs', async(req, res, next) => {
 
   try {
     const dog = await Dog.create(req.body)
+
+    // aca hay que agregar el join
+
     return res
       .status(201)
       .send(dog)
