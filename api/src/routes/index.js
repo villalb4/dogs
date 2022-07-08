@@ -36,4 +36,23 @@ router.get('/dogs', async(req, res, next) => {
   }
 })
 
+router.post('/dogs', async(req, res, next) => {
+  const {name, height, weight} = req.body;
+
+  if(!name || !height || !weight) {
+    return res
+      .status(400)
+      .send({msg: "Falta enviar datos obligatorios"})
+  }
+
+  try {
+    const dog = await Dog.create(req.body)
+    return res
+      .status(201)
+      .send(dog)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router;
