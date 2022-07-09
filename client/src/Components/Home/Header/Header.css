@@ -1,0 +1,37 @@
+.header {
+
+}
+
+.header_cont {
+  /* position: absolute; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+.nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.logo {
+  font-family: 'Nunito';
+  font-size: 26px;
+  font-weight: 900;
+  text-decoration: none;
+  letter-spacing: -1px;
+  color: var(--azul-oscuro);
+  transition: all 0.3s ease;
+}
+.logo:hover {
+  color: var(--azul-oscuro-hover);
+}
+.about {
+  font-family: 'Montserrat';
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--gris-claro);
+}

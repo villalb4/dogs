@@ -27,7 +27,7 @@ nav {
   background-color: var(--naranja);
   border: none;
   border-radius: 8px;
-  padding: 9px 21px;
+  padding: 14px 28px;
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -73,15 +73,15 @@ main {
   gap: 15px;
   align-items: center;
   font-family: 'Montserrat';
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
   text-decoration: none;
   color: var(--blanco);
   background-color: var(--azul-oscuro);
   border: none;
   border-radius: 12px;
-  max-width: 195px;
-  padding: 15px 24px;
+  max-width: 250px;
+  padding: 20px 15px 20px 46px;
   transition: all 0.3s ease;
   cursor: pointer;
 }

@@ -1,0 +1,21 @@
+.searchBar {
+  width: 239px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--gris-search-bar);
+  padding-left: 40px;
+  font-family: 'Montserrat';
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gris-placeholder);
+}
+.searchBar::placeholder {
+  font-family: 'Montserrat';
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gris-placeholder);
+}
+.searchBar:focus {
+  outline: none;
+}

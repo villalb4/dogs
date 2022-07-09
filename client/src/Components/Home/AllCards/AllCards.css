@@ -1,0 +1,18 @@
+.AllCards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.link_all_cards {
+  width: 240px;
+  height: 320px;
+  border-radius: 10px;
+  margin-bottom: 33px;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0px 4px 22px 0px #0000001A;
+  transition: all 0.3s ease;
+}
+.link_all_cards:hover {
+  box-shadow: 0px 4px 22px 0px #0000003d;
+}
