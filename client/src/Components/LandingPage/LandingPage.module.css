@@ -21,6 +21,7 @@ nav {
   font-family: 'Montserrat';
   font-size: 18px;
   font-weight: 700;
+  text-decoration: none;
   letter-spacing: 0.5%;
   color: var(--blanco);
   background-color: var(--naranja);
@@ -74,6 +75,7 @@ main {
   font-family: 'Montserrat';
   font-size: 28px;
   font-weight: 700;
+  text-decoration: none;
   color: var(--blanco);
   background-color: var(--azul-oscuro);
   border: none;

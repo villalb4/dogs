@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./LandingPage.module.css";
+import {Link} from "react-router-dom"
 import hero_desktop from "../../images/hero-desktop.png";
 // import hero_desktop_responsive from "../../images/hero-desktop-responsive.png";
 import arrow from "../../images/acc_arrow.svg";
@@ -17,7 +18,7 @@ function LandingPage() {
       <header>
         <nav>
           <span className={s.logo}>DOGS</span>
-          <button className={s.acceder}>Acceder</button>
+          <Link to="/home" className={s.acceder}>Acceder</Link>
         </nav>
       </header>
       {/* --- main --- */}
@@ -25,7 +26,7 @@ function LandingPage() {
         <div className={s.main_left}>
           <h1 className={s.titulo}>Porque todos los días es un día del <span className={s.titulo_perro}>Perro</span></h1>
           <p className={s.sub_titulo}>Tu mejor amigo te conoce mejor que nadie, tu lo conoces a el? averígualo con la mejor app sobre nuestros peludos favoritos.</p>
-          <button className={s.acceder_grande}>Acceder<img className={s.arrow} src={arrow} alt="arrow" /></button>
+          <Link to="/home" className={s.acceder_grande}>Acceder<img className={s.arrow} src={arrow} alt="arrow" /></Link>
         </div>
 
         <div className={s.main_right}>
