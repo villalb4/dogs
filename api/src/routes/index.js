@@ -12,27 +12,30 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
+
+
+
 router.get('/dogs', async(req, res, next) => {
-    const {name} = req.query;
-    if(!name){
-      return res
-        .status(400)
-        .send({msg: "Falta enviar datos obligatorios"})
-    }
-    try {
-      const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
-      const dogDb = await Dog.findAll({inlude: Temperament})
-      const allDog = await [...dogApi, ...dogDb]
+  const {name} = req.query;
+  if(!name){
+    return res
+      .status(400)
+      .send({msg: "Falta enviar datos obligatorios"})
+  }
+  try {
+    const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
+    const dogDb = await Dog.findAll({inlude: Temperament})
+    const allDog = await [...dogApi, ...dogDb]
   
-      const dog = await allDog.find(d => d.name.toLowerCase().includes(name.toLowerCase()))
+    const dog = await allDog.find(d => d.name.toLowerCase().includes(name.toLowerCase()))
       
-      return res
-        .status(200)
-        .send(dog)
-    } catch (error) {
-      next(error)
-    }
-  })
+    return res
+      .status(200)
+      .send(dog)
+  } catch (error) {
+    next(error)
+  }
+})
 
 
 
@@ -124,31 +127,6 @@ router.get('/temperaments', async(req, res)=> {
     next(error)
   }
 })
-
-
-
-
-// router.get('/search', async(req, res, next) => {
-//   const {name} = req.query;
-//   if(!name){
-//     return res
-//       .status(400)
-//       .send({msg: "Falta enviar datos obligatorios"})
-//   }
-//   try {
-//     const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
-//     const dogDb = await Dog.findAll({inlude: Temperament})
-//     const allDog = await [...dogApi, ...dogDb]
-
-//     const dog = await allDog.find(d => d.name = name)
-    
-//     return res
-//       .status(200)
-//       .send(dog)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
 
 
 
