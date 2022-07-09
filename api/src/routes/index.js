@@ -15,7 +15,7 @@ const router = Router();
 
 
 
-router.get('/dogs', async(req, res, next) => {
+router.get('/search', async(req, res, next) => {
   const {name} = req.query;
   if(!name){
     return res
@@ -105,7 +105,7 @@ router.post('/dogs', async(req, res, next) => {
 
 
 
-router.get('/temperaments', async(req, res)=> {
+router.get('/temperaments', async(req, res, next)=> {
   try {
     const temperamentos = (await axios.get(`${API}?api_key=${API_KEY}`)).data
 
