@@ -1,9 +1,7 @@
 .header {
-
+  margin-bottom: 216px;
 }
-
 .header_cont {
-  /* position: absolute; */
   display: flex;
   justify-content: space-between;
   align-items: center;
