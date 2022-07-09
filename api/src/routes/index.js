@@ -12,6 +12,28 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
+router.get('/dogs', async(req, res, next) => {
+    const {name} = req.query;
+    if(!name){
+      return res
+        .status(400)
+        .send({msg: "Falta enviar datos obligatorios"})
+    }
+    try {
+      const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
+      const dogDb = await Dog.findAll({inlude: Temperament})
+      const allDog = await [...dogApi, ...dogDb]
+  
+      const dog = await allDog.find(d => d.name.toLowerCase().includes(name.toLowerCase()))
+      
+      return res
+        .status(200)
+        .send(dog)
+    } catch (error) {
+      next(error)
+    }
+  })
+
 
 
 
@@ -55,13 +77,11 @@ router.get('/dogs', async(req, res, next) => {
 
 router.post('/dogs', async(req, res, next) => {
   const {name, height, weight, temperament} = req.body;
-
   if(!name || !height || !weight) {
     return res
       .status(400)
       .send({msg: "Falta enviar datos obligatorios"})
   }
-
   try {
     const dog = await Dog.create(req.body)
 
@@ -84,13 +104,12 @@ router.post('/dogs', async(req, res, next) => {
 
 router.get('/temperaments', async(req, res)=> {
   try {
-    // const temperamentos = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data
     const temperamentos = (await axios.get(`${API}?api_key=${API_KEY}`)).data
 
     const formateo = temperamentos.map(t => t.temperament)
     const uniendo = formateo.filter(r => r != null)
     .join().split(", ").join().split(",")
-    // se borran los temperamentos duplicados
+
     let resultado = uniendo.reduce((a, e) => {
       if(!a.find(d => d == e)) a.push(e)
       return a
@@ -101,7 +120,6 @@ router.get('/temperaments', async(req, res)=> {
     await Temperament.bulkCreate(resultado)
 
     res.send({msg: "Datos agregados correctamente"})
-
   } catch (error) {
     next(error)
   }
@@ -110,25 +128,27 @@ router.get('/temperaments', async(req, res)=> {
 
 
 
-router.get('/search', async(req, res, next) => {
-  const {name} = req.query;
+// router.get('/search', async(req, res, next) => {
+//   const {name} = req.query;
+//   if(!name){
+//     return res
+//       .status(400)
+//       .send({msg: "Falta enviar datos obligatorios"})
+//   }
+//   try {
+//     const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
+//     const dogDb = await Dog.findAll({inlude: Temperament})
+//     const allDog = await [...dogApi, ...dogDb]
 
-  if(!name){
-    return res
-      .status(400)
-      .send({msg: "Falta enviar datos obligatorios"})
-  }
-
-  try {
-    const dog = (await axios.get(`${API_SEARCH}${name}?api_key=${API_KEY}`)).data
-    // const dog = await Dog.findAll({where: {name: name}})
-    return res
-      .status(200)
-      .send(dog)
-  } catch (error) {
-    next(error)
-  }
-})
+//     const dog = await allDog.find(d => d.name = name)
+    
+//     return res
+//       .status(200)
+//       .send(dog)
+//   } catch (error) {
+//     next(error)
+//   }
+// })
 
 
 
@@ -146,7 +166,6 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
     const allDog = [...dogDb, ...dogApi]
 
     const dog = allDog.filter(d => d.id == idRaza)
-
 
     return res
       .status(200)
