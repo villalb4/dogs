@@ -8,7 +8,7 @@ nav {
   align-items: center;
   max-width: 1110px;
   margin: 0 auto;
-  padding: 32px 30px;
+  padding: 34px 30px;
 }
 .logo {
   font-family: 'Nunito';
@@ -27,7 +27,7 @@ nav {
   background-color: var(--naranja);
   border: none;
   border-radius: 8px;
-  padding: 14px 28px;
+  padding: 12px 22px;
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -73,15 +73,15 @@ main {
   gap: 15px;
   align-items: center;
   font-family: 'Montserrat';
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 700;
   text-decoration: none;
   color: var(--blanco);
   background-color: var(--azul-oscuro);
   border: none;
   border-radius: 12px;
-  max-width: 250px;
-  padding: 20px 15px 20px 46px;
+  max-width: 200px;
+  padding: 18px 10px 18px 30px;
   transition: all 0.3s ease;
   cursor: pointer;
 }

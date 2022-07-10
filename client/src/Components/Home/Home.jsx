@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header'
 import AllCards from './AllCards/AllCards';
-import CreateDog from './CreateDog/CreateDog';
+import ButtonCreateDog from './ButtonCreateDog/ButtonCreateDog';
 import './Home.css';
 
 function Home() {
@@ -9,7 +9,7 @@ function Home() {
     <div className="home">
       <Header />
       <div className='home_options'>
-        <CreateDog />
+        <ButtonCreateDog />
       </div>
       <AllCards />
     </div>

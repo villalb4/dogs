@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './CreateDog.css';
+import './ButtonCreateDog.css';
 import dogButton from '../../../images/dog_create_button.png'
 
-function CreateDog() {
+function ButtonCreateDog() {
   return (
     <Link to="/create dog" className='button_crear_perro'>
       <p className='text_button'>Crea un nuevo <span className='text_button_naranja'>perro</span></p>
@@ -12,4 +12,4 @@ function CreateDog() {
   )
 }
 
-export default CreateDog;
+export default ButtonCreateDog;
