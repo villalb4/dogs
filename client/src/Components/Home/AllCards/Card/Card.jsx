@@ -10,15 +10,12 @@ function Card({image, name, weight, temperament}) {
       <div className='div_info_card'>
         <span className='card_name_dog'>{name}</span>
         <div>
-          <span className='card_weight_dog'>{weight}</span> 
+          <span className='card_weight_dog'>{weight} KG</span> 
         </div>
         <div>
-          <span className='card_temperament_dog'>
+          <p className='card_temperament_dog'>
             {temperament}
-            {/* {temperament.map((temp, i) => (
-              temp
-            ))} */}
-          </span>
+          </p>
         </div>
       </div>
     </div>

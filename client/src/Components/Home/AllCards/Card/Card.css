@@ -1,21 +1,18 @@
-.card {
-  height: 320px;
-}
 .div_image_card {
   max-width: 240px;
-  height: 172px;
+  height: 160px;
   overflow: hidden;
 }
 .card_image_dog {
-  max-width: 240px;
+  /* max-width: 240px; */
   /* height: 172px; */
-
+  width: 100%;
 }
 .div_info_card {
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat';
-  padding: 10px 10px 14px 10px;
+  padding: 10px;
 }
 .card_name_dog {
   font-size: 20px;
@@ -28,5 +25,7 @@
   color: var(--naranja);
 }
 .card_temperament_dog {
-  color: blue;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gris-muy-claro);
 }

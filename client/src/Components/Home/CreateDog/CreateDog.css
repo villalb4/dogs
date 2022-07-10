@@ -1,0 +1,22 @@
+.button_crear_perro {
+  display: flex;
+  max-width: 240px;
+  padding: 6px 0 0 17px;
+  text-decoration: none;
+  background-color: var(--azul-oscuro);
+  border-radius: 10px;
+}
+.text_button {
+  font-family: 'Montserrat';
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--blanco);
+  max-width: 90px;
+  /* margin: 10px 0 11px 17px; */
+}
+.text_button_naranja {
+  color: var(--naranja);
+}
+.dog_button_create {
+  max-width: 133px;
+}
