@@ -2,7 +2,9 @@
   display: flex;
   align-items: center;
   background-color: var(--gris-search-bar);
-  border-radius: 12px;
+  border-radius: 10px;
+  /* max-width: 240px; */
+  width: 240px;
   overflow: hidden;
 }
 .searchBar {
@@ -28,4 +30,44 @@
 .searchIcon {
   width: 20px;
   margin-left: 15px;
+}
+
+
+.divSearchBar_Results {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: absolute;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(213, 213, 213, 0.701);
+  width: 240px;
+  overflow: hidden;
+  overflow-y: auto;
+  /* height: 220px; */
+  background-color: var(--blanco);
+  margin-top: 10px;
+}
+
+.divSearchBar_Results::-webkit-scrollbar {
+  display: none;
+}
+
+.results{
+  display: flex;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--gris-muy-claro);
+  overflow: hidden;
+}
+.results:hover {
+  color: var(--naranja);
+}
+
+.div_nameResult{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text_result {
 }
