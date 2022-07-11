@@ -30,7 +30,7 @@ function SearchBar() {
       {dataResult.length !== 0 && (<div className="divSearchBar_Results">
         {dataResult.slice(0, 10).map((d, i) => {
           return (
-            <Link to="#" className="results">
+            <Link to={`/details/${d.id}`} className="results">
               {/* <div className="div_imageResult"><img className="image_result" src={d.image} alt="result img"/></div> */}
               <div className="div_nameResult" key={i}><span className="text_result">{d.name}</span></div>
             </Link>
