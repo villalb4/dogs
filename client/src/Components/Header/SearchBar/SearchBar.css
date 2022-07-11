@@ -1,10 +1,16 @@
-.searchBar {
-  width: 239px;
-  height: 50px;
+.divInput_SearchBar {
+  display: flex;
+  align-items: center;
+  background-color: var(--gris-search-bar);
   border-radius: 12px;
+  overflow: hidden;
+}
+.searchBar {
+  width: 200px;
+  height: 50px;
   border: none;
   background-color: var(--gris-search-bar);
-  padding-left: 40px;
+  padding-left: 12px;
   font-family: 'Montserrat';
   font-size: 18px;
   font-weight: 700;
@@ -18,4 +24,8 @@
 }
 .searchBar:focus {
   outline: none;
+}
+.searchIcon {
+  width: 20px;
+  margin-left: 15px;
 }
