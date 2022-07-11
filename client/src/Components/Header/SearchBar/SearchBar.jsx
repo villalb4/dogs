@@ -28,7 +28,7 @@ function SearchBar() {
       </div>
 
       {dataResult.length !== 0 && (<div className="divSearchBar_Results">
-        {dataResult.slice(0, 10).map((d, i) => {
+        {dataResult.slice(0, 14).map((d, i) => {
           return (
             <Link to={`/details/${d.id}`} className="results">
               {/* <div className="div_imageResult"><img className="image_result" src={d.image} alt="result img"/></div> */}
