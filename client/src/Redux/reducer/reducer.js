@@ -1,7 +1,8 @@
-import { GET_DOGS } from "../actions/actions";
+import { GET_DOGS , GET_DETAILS } from "../actions/actions";
 
 const initialState = {
-  dogs: []
+  dogs: [],
+  details: []
 };
 
 const rootReducer = (state = initialState, {type, payload}) => {
@@ -10,6 +11,11 @@ const rootReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         dogs: payload
+      }
+    case GET_DETAILS:
+      return {
+        ...state,
+        details: payload
       }
     default:
       return state

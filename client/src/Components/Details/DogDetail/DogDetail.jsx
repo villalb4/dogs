@@ -1,10 +1,10 @@
 import React from "react";
 import './DogDetail.css';
 
-function DogDetail({image, name, height ,weight, life_span, temperament}){
+function DogDetail({dog}){
   return(
     <div className="dogDetail">
-      <img src={image} />
+      <img src={dog.image} alt="" />
     </div>
   )
 }
