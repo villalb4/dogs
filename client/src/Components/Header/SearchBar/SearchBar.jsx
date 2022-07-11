@@ -12,10 +12,12 @@ function SearchBar() {
 
   function handleChange(e){
     const value = e.target.value.toLowerCase();
-    const searchResult = dogs.filter(v => {
-      return v.name.toLowerCase().includes(value)
-    })
-    setDataResult(searchResult)
+    if(value) {
+      const searchResult = dogs.filter(v => {
+        return v.name.toLowerCase().includes(value)
+      })
+      setDataResult(searchResult)
+    } else setDataResult([])
   }
 
   return(
@@ -26,11 +28,10 @@ function SearchBar() {
       </div>
 
       {dataResult.length !== 0 && (<div className="divSearchBar_Results">
-        {dataResult.map((d, i) => {
+        {dataResult.slice(0, 10).map((d, i) => {
           return (
             <Link to="#" className="results">
               {/* <div className="div_imageResult"><img className="image_result" src={d.image} alt="result img"/></div> */}
-              {/* <div className="div_imageResult" style="backgound: {d.image}"></div> */}
               <div className="div_nameResult" key={i}><span className="text_result">{d.name}</span></div>
             </Link>
           )

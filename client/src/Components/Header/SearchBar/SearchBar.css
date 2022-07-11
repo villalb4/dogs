@@ -44,13 +44,13 @@
   width: 240px;
   overflow: hidden;
   overflow-y: auto;
-  /* height: 220px; */
+  max-height: 400px;
   background-color: var(--blanco);
   margin-top: 10px;
 }
 
 .divSearchBar_Results::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
 }
 
 .results{
