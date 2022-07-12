@@ -24,10 +24,11 @@ router.get('/search', async(req, res, next) => {
   }
   try {
     const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
-    const dogDb = await Dog.findAll({inlude: Temperament})
+    const dogDb = await Dog.findAll({where: {name: name}, include: Temperament})
+
     const allDog = await [...dogApi, ...dogDb]
   
-    const dog = await allDog.find(d => d.name.toLowerCase().includes(name.toLowerCase()))
+    const dog = await allDog.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))
       
     return res
       .status(200)
@@ -89,7 +90,7 @@ router.post('/dogs', async(req, res, next) => {
     const dog = await Dog.create(req.body)
 
     let tempDb = await Temperament.findAll({
-      where: {name : temperament}
+      where: {id : temperament}
     })
 
     await dog.addTemperament(tempDb)
@@ -139,9 +140,35 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
       .send({msg: "Falta enviar datos obligatorios"})
   }
   try {
-    const dogDb = await Dog.findAll({include: Temperament})
     const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
-    const allDog = [...dogDb, ...dogApi]
+    //formateando la api para traer solo los datos necesarios para la ruta pricipal
+    const apiFormateo = dogApi.map(dog => {
+      return {
+        id: dog.id,
+        image: dog.image.url,
+        name: dog.name,
+        height: dog.height.imperial,
+        weight: dog.height.metric,
+        life_span: dog.life_span,
+        temperament: dog.temperament
+      }
+    })
+    
+    const dogDb = await Dog.findAll({include: Temperament});
+
+    const dbFormateo = dogDb.map(dog => {
+      return {
+        id: dog.id,
+        image: dog.image.url,
+        name: dog.name,
+        height: dog.height.imperial,
+        weight: dog.height.metric,
+        life_span: dog.life_span,
+        temperament: dog.temperament
+      }
+    })
+
+    const allDog = [...apiFormateo, ...dbFormateo];
 
     const dog = allDog.filter(d => d.id == idRaza)
 

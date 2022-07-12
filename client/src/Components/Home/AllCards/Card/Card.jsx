@@ -14,7 +14,9 @@ function Card({image, name, weight, temperament}) {
         </div>
         <div>
           <p className='card_temperament_dog'>
-            {temperament}
+            {
+              typeof(temperament) === "string" ? temperament : temperament?.map(t => t.name)
+            }
           </p>
         </div>
       </div>

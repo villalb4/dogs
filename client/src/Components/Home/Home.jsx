@@ -1,9 +1,8 @@
-import React, {lazy, Suspense} from 'react';
+import React from 'react';
 import Header from '../Header/Header';
-import Loader from './Loader/Loader';
+import AllCards from './AllCards/AllCards';
 import ButtonCreateDog from './ButtonCreateDog/ButtonCreateDog';
 import './Home.css';
-const AllCards = lazy(()=>import('./AllCards/AllCards'));
 
 function Home() {
   return (
@@ -13,10 +12,8 @@ function Home() {
       <div className='home_options'>
         <ButtonCreateDog />
       </div>
-
-      <Suspense fallback={<Loader />}>
-        <AllCards />
-      </Suspense>
+      
+      <AllCards />
     </div>
   )
 }

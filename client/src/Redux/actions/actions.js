@@ -20,7 +20,7 @@ export const getDogs = () => {
 export const getDetail = (id) => {
   return async function(dispatch) {
     try {
-      let details = (await axios("http://localhost:3001/dogs/" + id)).data
+      let details = (await axios(`http://localhost:3001/dogs/${id}`)).data
       return dispatch({
       type: GET_DETAILS,
       payload: details
