@@ -7,7 +7,7 @@ function Header() {
   return(
     <div className="header">
       <div className="header_cont">
-        <Link to="/home" className="logo">DOGS</Link>
+        <Link to="/home" className="logo"><h1 className="logo">DOGS</h1></Link>
         <div className="nav">
           <NavLink to="#" className="about">About</NavLink>
           <SearchBar />
