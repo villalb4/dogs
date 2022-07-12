@@ -1,4 +1,67 @@
+.profile {
+  display: flex;
+  gap: 45px;
+  width: 526px;
+  font-family: 'Montserrat';
+}
 .dogDetail {
   max-width: 1050px;
   margin: 0 auto;
+}
+.div_dog_profile {
+  width: 227px; 
+  height: 227px;
+  border-radius: 10px; 
+  overflow: hidden;
+}
+.image_dog_profile {
+  position: relative;
+  max-width: 365px;
+  right: 70px;
+}
+.div_dog_name {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.name_dog {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--azul-oscuro);
+}
+.sobre_dog {
+  font-size: 20px;
+  font-weight: 700;
+  color: #565656;
+}
+
+.table_container {
+  margin-top: 44px;
+}
+table {
+  max-width: 526px;
+  width: 100%;
+}
+th {
+  color: var(--azul-oscuro);
+  text-align: start;
+}
+table, th, td {
+  border: 1px solid var(--gris-claro);
+  border-collapse: collapse;
+}
+.table_caracteristicas {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--gris-oscuro);
+  padding: 20px;
+}
+.table_temp {
+  padding-bottom: 88px;
+}
+.table_datos {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--gris-claro);
 }

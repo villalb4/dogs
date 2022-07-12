@@ -13,18 +13,11 @@ function Details(props) {
   useEffect(() => {
     dispatch(getDetail(id))
   },[dispatch, id])
-  
-  console.log(dog[0])
-
-  // const [dogs, setDogs] = useState(dog[0]);
-
 
   return(
     <div>
       <Header />
-
       <DogDetail dog={dog[0]? dog[0] : null}/>
-  
     </div>
   )
 }
