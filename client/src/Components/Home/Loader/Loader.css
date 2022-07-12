@@ -17,9 +17,9 @@
 
 @keyframes skeleton_loading {
   0% {
-    background-color: hsl(199, 22%, 80%);
+    background-color: hsl(0, 0%, 95%);
   }
   100% {
-    background-color: hsl(200, 20%, 95%);
+    background-color: hsl(0, 0%, 78%);
   }
 }

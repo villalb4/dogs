@@ -15,7 +15,6 @@ function AllCards() {
     dispatch(getDogs())
   }, [dispatch])
 
-
   function cards() {
     return (
       dogs.map((dog, i) => (
@@ -26,17 +25,9 @@ function AllCards() {
     )
   }
 
-
   return(
     <div className='AllCards'>
-      {/* {dogs.map((dog, i) => (
-        <Link to={`/home/${dog.id}`} key={i} className="link_all_cards">
-          <Card image={dog.image} name={dog.name} weight={dog.weight} temperament={dog.temperament}/> 
-        </Link>
-      ))} */}
-
       {dogs.length !== 0 ? cards() : <Loader />}
-
     </div>
   )
 }
