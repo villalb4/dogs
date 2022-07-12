@@ -47,8 +47,9 @@
   overflow: hidden;
   margin-top: 10px;
 }
-
 .results{
+  display: flex;
+  gap: 10px;
   text-decoration: none;
   color: var(--gris-muy-claro);
   overflow: hidden;
@@ -62,6 +63,4 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-.text_result {
 }
