@@ -5,6 +5,8 @@
   font-family: 'Montserrat';
 }
 .dogDetail {
+  display: flex;
+  justify-content: space-between;
   max-width: 1050px;
   margin: 0 auto;
 }
@@ -37,7 +39,7 @@
 }
 
 .table_container {
-  margin-top: 44px;
+  margin: 44px 0 100px;
 }
 table {
   max-width: 526px;
@@ -51,6 +53,9 @@ table, th, td {
   border: 1px solid var(--gris-claro);
   border-collapse: collapse;
 }
+.encabezado_tabla {
+  padding: 20px ;
+}
 .table_caracteristicas {
   font-size: 17px;
   font-weight: 600;
@@ -61,7 +66,17 @@ table, th, td {
   padding-bottom: 88px;
 }
 .table_datos {
+  padding: 20px;
   font-size: 16px;
   font-weight: 500;
   color: var(--gris-claro);
+}
+.div_banner {
+  max-width: 400px;
+  height: 653px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.banner {
+  max-width: 450px;
 }
