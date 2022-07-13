@@ -44,12 +44,13 @@
 table {
   max-width: 526px;
   width: 100%;
+  border-collapse: collapse;
 }
 th {
   color: var(--azul-oscuro);
   text-align: start;
 }
-table, th, td {
+th, td {
   border: 1px solid var(--gris-claro);
   border-collapse: collapse;
 }
