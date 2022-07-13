@@ -35,7 +35,12 @@ label {
   padding: 6px 6px;
   height: 50px;
   margin-top: 10px;
+  border: 2px solid transparent;
 }
+.div_input.error{
+  border: 2px solid rgba(255, 0, 0, 0.28);
+}
+
 .div_inputs_dobles {
   display: flex;
   justify-content: space-between;
@@ -88,6 +93,9 @@ label {
   padding: 10px 0;
   border-radius: 8px;
   background-color: var(--naranja);
+}
+.submit:focus {
+  outline: none;
 }
 .dato_incorrecto {
   display: none;
