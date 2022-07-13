@@ -1,0 +1,63 @@
+.Form_container {
+  max-width: 526px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 22px 0px #0000001A;
+  font-family: 'Montserrat';
+  padding: 40px;
+}
+.form_title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--azul-oscuro);
+}
+.form_title_naranja {
+  color: var(--naranja);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
+}
+.div_input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 10px;
+  background-color: var(--gris-search-bar);
+  padding: 6px 6px;
+  height: 50px;
+}
+label {
+  position: relative;
+  top: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--azul-oscuro);
+  margin-left: 15px;
+}
+.form_input {
+  border: none;
+  background-color: var(--gris-search-bar);
+  height: 100%;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 4px 9px;
+  color: var(--gris-claro);
+  letter-spacing: 0.6px;
+}
+.form_input:focus {
+  outline: none;
+}
+.form_input::placeholder {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  color: var(--gris-placeholder);
+}
+.dato_incorrecto {
+  margin-left: 15px;
+  color: #DF4545;
+  font-size: 12px;
+  font-weight: 700;
+}
