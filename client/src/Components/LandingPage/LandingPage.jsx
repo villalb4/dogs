@@ -2,6 +2,8 @@ import React from "react";
 import s from "./LandingPage.module.css";
 import {Link} from "react-router-dom"
 import hero_desktop from "../../images/hero-desktop.png";
+import hero_desktop_responsive from "../../images/hero-desktop-responsive.png";
+import hero_mobile from "../../images/hero-mobile.png";
 // import hero_desktop_responsive from "../../images/hero-desktop-responsive.png";
 import arrow from "../../images/acc_arrow.svg";
 // ----- icons -----
@@ -30,11 +32,15 @@ function LandingPage() {
         </div>
 
         <div className={s.main_right}>
-          <img className={s.hero} src={hero_desktop} alt="hero" />
+          <div className={s.div_hero}>
+            <img className={s.hero} src={hero_desktop} alt="hero" />
+            <img className={s.hero_responsive} src={hero_desktop_responsive} alt="hero" />
+            <img className={s.hero_mobile} src={hero_mobile} alt="hero" />
+          </div>
         </div>
       </main>
-      {/* --- button --- */}
-      <div className={s.button}>
+
+      <div className={s.div_functions}>
         <div className={s.funciones}>
           <img className={s.icon} src={icon1} alt="icon" />
           <p className={s.funcion_desc}>Busca a tu  perro favorito</p>
