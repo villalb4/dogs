@@ -11,14 +11,14 @@
   margin: 0 auto;
 }
 .div_dog_profile {
-  width: 227px; 
-  height: 227px;
+  width: 180px; 
+  height: 180px;
   border-radius: 10px; 
   overflow: hidden;
 }
 .image_dog_profile {
   position: relative;
-  max-width: 365px;
+  max-width: 310px;
   right: 70px;
 }
 .div_dog_name {
