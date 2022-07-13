@@ -17,23 +17,47 @@
   display: flex;
   flex-direction: column;
   gap: 31px;
+  margin-top: 50px;
+}
+label {
+  /* position: relative;
+  top: 9px; */
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gris-claro);
 }
 .div_input {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   width: 100%;
   border-radius: 10px;
   background-color: var(--gris-search-bar);
   padding: 6px 6px;
   height: 50px;
+  margin-top: 10px;
 }
-label {
-  position: relative;
-  top: 9px;
-  font-size: 14px;
+.div_inputs_dobles {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.unidad {
   font-weight: 700;
-  color: var(--azul-oscuro);
-  margin-left: 15px;
+  font-size: 14px;
+  border-left: 1px solid var(--gris-placeholder);
+  padding: 15px 2px 15px 5px;
+  color: var(--gris-claro);
+}
+.label_min {
+  opacity: 0;
+}
+.form_input.min,
+.form_input.max {
+  max-width: 165px;
+}
+.form_input.min_years,
+.form_input.max_years {
+  max-width: 149px;
 }
 .form_input {
   border: none;
@@ -55,7 +79,18 @@ label {
   letter-spacing: 0px;
   color: var(--gris-placeholder);
 }
+.submit {
+  width: 100%;
+  border: none;
+  color: var(--blanco);
+  font-size: 26px;
+  font-weight: 700;
+  padding: 10px 0;
+  border-radius: 8px;
+  background-color: var(--naranja);
+}
 .dato_incorrecto {
+  display: none;
   margin-left: 15px;
   color: #DF4545;
   font-size: 12px;
