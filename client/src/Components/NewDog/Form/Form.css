@@ -74,6 +74,7 @@ label {
   padding: 4px 9px;
   color: var(--gris-claro);
   letter-spacing: 0.6px;
+  width: 100%;
 }
 .form_input:focus {
   outline: none;
