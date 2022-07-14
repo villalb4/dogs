@@ -6,12 +6,18 @@
   padding: 40px;
 }
 .form_title {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--azul-oscuro);
 }
 .form_title_naranja {
   color: var(--naranja);
+}
+.datos_obligatorios {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--azul-oscuro);
 }
 .form {
   display: flex;
@@ -72,7 +78,7 @@ label {
   font-size: 16px;
   font-weight: 700;
   padding: 4px 9px;
-  color: var(--gris-claro);
+  color: var(--azul-oscuro);
   letter-spacing: 0.6px;
   width: 100%;
 }

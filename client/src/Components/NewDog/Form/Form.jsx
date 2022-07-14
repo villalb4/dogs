@@ -7,7 +7,7 @@ function validar(input) {
   //name
   let errors = {};
   if(!input.name) {
-    errors.name = 'Debes ponerle un nombre a su perro'
+    errors.name = 'Debes ponerle un nombre'
   } 
 
   //height
@@ -68,9 +68,9 @@ function Form() {
   return(
     <div className='Form_container'>
       <h2 className='form_title'>AGREGA LOS DATOS DE TU <span className='form_title_naranja'>PERRO</span></h2>
-       {/* <span>{input.name}</span> */}
-      <form className='form' action="" onSubmit={handleSubmit}>
+      <p className='datos_obligatorios'>Datos con * obligatorios</p>
 
+      <form className='form' action="" onSubmit={handleSubmit}>
         {/* ---- INPUT NAME ---- */}
         <div>
           <div>
