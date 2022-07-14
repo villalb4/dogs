@@ -19,7 +19,14 @@ function AllCards() {
     return (
       dogs.map((dog, i) => (
         <Link to={`/home/${dog.id}`} key={i} className="link_all_cards">
-          <Card image={dog.image} name={dog.name} weight={dog.weight} temperament={dog.temperament}/> 
+          <Card 
+            image={dog.image} 
+            name={dog.name} 
+            weight={dog.weight}
+            weight_min={dog.weight_min}
+            weight_max={dog.weight_max}
+            temperament={dog.temperament} 
+          /> 
         </Link>
       ))
     )

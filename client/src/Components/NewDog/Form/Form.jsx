@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
+import {dogPost} from '../../../Redux/actions/actions';
 import './Form.css';
 
 
@@ -34,6 +36,8 @@ function validar(input) {
 
 function Form() {
 
+  const dispatch = useDispatch()
+
   const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
@@ -60,6 +64,10 @@ function Form() {
 
   function handleSubmit(e){
     e.preventDefault();
+    if(!errors) {
+      dispatch(dogPost(input))
+    }
+    setInput({})
   }
 
 

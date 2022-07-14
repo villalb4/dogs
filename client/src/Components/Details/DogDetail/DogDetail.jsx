@@ -1,6 +1,7 @@
 import React from "react";
+import imageDogDefault from '../../../images/image-dog-default.jpg';
+import banner from '../../../images/banner.jpg';
 import './DogDetail.css';
-import banner from '../../../images/banner.jpg'
 
 function DogDetail({dog}){
   return(
@@ -9,7 +10,7 @@ function DogDetail({dog}){
       <div className="left">
         <div className="profile">
           <div className="div_dog_profile">
-            <img className="image_dog_profile" src={dog?.image} alt="dog"/>
+            <img className="image_dog_profile" src={dog?.image ? dog?.image : imageDogDefault} alt="dog"/>
           </div>
           <div className="div_dog_name">
             <h2 className="name_dog">{dog?.name}</h2>
