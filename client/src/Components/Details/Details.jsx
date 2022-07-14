@@ -21,7 +21,7 @@ function Details(props) {
   return(
     <div>
       <Header />
-      <DogDetail dog={dog[0]? dog[0] : null}/>
+      <DogDetail dog={dog[0]}/>
     </div>
   )
 }

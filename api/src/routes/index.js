@@ -143,7 +143,7 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
   try {
     const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
     //formateando la api para traer solo los datos necesarios para la ruta pricipal
-    const apiFormateo = dogApi.map(dog => {
+    const apiFormateo = await dogApi.map(dog => {
       return {
         id: dog.id,
         image: dog.image.url,
@@ -160,7 +160,7 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
     
     const dogDb = await Dog.findAll({include: Temperament});
 
-    const dbFormateo = dogDb.map(dog => {
+    const dbFormateo = await dogDb.map(dog => {
       return {
         id: dog.id,
         image: dog.image,
