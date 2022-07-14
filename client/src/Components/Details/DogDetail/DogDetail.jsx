@@ -21,23 +21,28 @@ function DogDetail({dog}){
           <table>
             <tr>
               <th className="encabezado_tabla">CARACTERISTICAS</th>
-              <th className="encabezado_tabla">MIN & MAX</th>
+              <th className="encabezado_tabla">MIN</th>
+              <th className="encabezado_tabla">MAX</th>
             </tr>
             <tr>
               <td className="table_caracteristicas">ALTURA</td>
-              <td className="table_datos">{dog?.weight} Cm</td>
+              <td className="table_datos">{dog?.weight_min}</td>
+              <td className="table_datos">{dog?.weight_max} Cm</td>
             </tr>
             <tr>
               <td className="table_caracteristicas">PESO</td>
-              <td className="table_datos">{dog?.height} Kg</td>
+              <td className="table_datos">{dog?.height_min}</td>
+              <td className="table_datos">{dog?.height_max}Kg</td>
             </tr>
             <tr>
               <td className="table_caracteristicas">AÑOS DE VIDA</td>
-              <td className="table_datos">{dog?.life_span} </td>
+              <td className="table_datos">{dog?.life_span_min}</td>
+              <td className="table_datos">{dog?.life_span_max}</td>
             </tr>
             <tr>
               <td className="table_caracteristicas table_temp">TEMPERAMENTO</td>
               <td className="table_datos">{dog?.temperament} </td>
+              {/* <td className="table_datos">{typeof(dog?.temperament) === "string" ? dog?.temperament : dog?.temperament.map(t => t.name)}</td> */}
             </tr>
           </table>
         </div>

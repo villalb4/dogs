@@ -62,7 +62,8 @@ router.get('/dogs', async(req, res, next) => {
         id: dog.id,
         image: dog.image,
         name: dog.name,
-        weight: dog.weight,
+        weight_min: dog.weight_min,
+        weight_max: dog.weight_max,
         temperament: dog.temperaments
       }
     })
@@ -80,8 +81,8 @@ router.get('/dogs', async(req, res, next) => {
 
 
 router.post('/dogs', async(req, res, next) => {
-  const {name, height, weight, temperament} = req.body;
-  if(!name || !height || !weight) {
+  const {name, height_min, height_max, weight_min, weight_max, temperament} = req.body;
+  if(!name || !height_min || !height_max || !weight_min || !weight_max) {
     return res
       .status(400)
       .send({msg: "Falta enviar datos obligatorios"})
@@ -147,9 +148,12 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
         id: dog.id,
         image: dog.image.url,
         name: dog.name,
-        height: dog.height.imperial,
-        weight: dog.height.metric,
-        life_span: dog.life_span,
+        weight_min: parseInt(dog.weight.metric.slice(0, 2).trim()),
+        weight_max: parseInt(dog.weight.metric.slice(4).trim()),
+        height_min: parseInt(dog.height.metric.slice(0, 2).trim()),
+        height_max: parseInt(dog.height.metric.slice(4).trim()),
+        life_span_min: parseInt(dog.life_span.slice(0, 2).trim()),
+        life_span_max: parseInt(dog.life_span.slice(4).trim()),
         temperament: dog.temperament
       }
     })
@@ -159,11 +163,14 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
     const dbFormateo = dogDb.map(dog => {
       return {
         id: dog.id,
-        image: dog.image.url,
+        image: dog.image,
         name: dog.name,
-        height: dog.height.imperial,
-        weight: dog.height.metric,
-        life_span: dog.life_span,
+        height_min: dog.height_min,
+        height_max: dog.height_max,
+        weight_min: dog.height_min,
+        weight_max: dog.height_max,
+        life_span_min: dog.life_span_min,
+        life_span_max: dog.life_span_max,
         temperament: dog.temperament
       }
     })

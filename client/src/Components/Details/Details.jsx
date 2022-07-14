@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import Header from '../Header/Header';
 import DogDetail from './DogDetail/DogDetail';
@@ -13,6 +13,10 @@ function Details(props) {
   useEffect(() => {
     dispatch(getDetail(id))
   },[dispatch, id])
+
+  // const [dogs, setDog] = useState(dog[0])
+
+  // console.log(dogs)
 
   return(
     <div>

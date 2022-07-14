@@ -18,6 +18,11 @@ const rootReducer = (state = initialState, {type, payload}) => {
         ...state,
         details: payload
       }
+
+    case 'DOG_POST':
+      return {
+        ...state
+      }
     // case FILTER_DOG:
     //   const allDogs = state.dogs;
     //   const filtro = payload === 'temperament' ? allDogs : allDogs.filter(e => e.status === payload) 
