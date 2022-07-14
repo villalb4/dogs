@@ -2,6 +2,8 @@ import axios from 'axios';
 
 export const GET_DOGS = 'GET_DOGS';
 export const GET_DETAILS = 'GET_DETAILS';
+// export const FILTER_DOG = 'FILTER_DOG';
+// export const GET_TEMPERAMENT = 'GET_TEMPERAMENT' 
 
 export const getDogs = () => {
   return async function(dispatch) {
@@ -25,8 +27,31 @@ export const getDetail = (id) => {
       type: GET_DETAILS,
       payload: details
     })
-    } catch (error) {
-      console.log(error)
-    }
+  } catch (error) {
+    console.log(error)
   }
 }
+}
+
+// export const getTemperament = () => {
+//   return async function(dispatch) {
+//     try {
+//       let temperaments = (await axios("http://localhost:3001/temperaments")).data;
+//       let allTemps = temperaments.map(e => e.name)
+//       return dispatch({
+//         type: GET_TEMPERAMENT,
+//         payload: allTemps
+//       })
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   }
+// }
+
+// export const filterDog = (value) => {
+//   console.log(value)
+//   return {
+//     type: FILTER_DOG,
+//     payload: value
+//   }
+// }

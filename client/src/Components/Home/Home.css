@@ -3,5 +3,7 @@
   margin: 0 auto;
 }
 .home_options {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 55px;
 }

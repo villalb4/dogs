@@ -1,8 +1,9 @@
-import { GET_DOGS , GET_DETAILS } from "../actions/actions";
+import { GET_DOGS , GET_DETAILS , FILTER_DOG, GET_TEMPERAMENT } from "../actions/actions";
 
 const initialState = {
   dogs: [],
-  details: []
+  details: [],
+  temperaments: []
 };
 
 const rootReducer = (state = initialState, {type, payload}) => {
@@ -17,6 +18,18 @@ const rootReducer = (state = initialState, {type, payload}) => {
         ...state,
         details: payload
       }
+    // case FILTER_DOG:
+    //   const allDogs = state.dogs;
+    //   const filtro = payload === 'temperament' ? allDogs : allDogs.filter(e => e.status === payload) 
+    //   return {
+    //     ...state,
+    //     dogs: filtro
+    //   }
+    // case GET_TEMPERAMENT:
+    //   return {
+    //     ...state,
+    //     temperaments: payload
+    //   }
     default:
       return state
   }
