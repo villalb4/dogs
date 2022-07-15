@@ -93,6 +93,9 @@ function Form() {
   }
 
   function handleSelect(e){
+
+    if(input.temperament.includes(e.target.value)) return
+
     setInput({
       ...input,
       temperament: [...input.temperament, e.target.value]
@@ -217,7 +220,7 @@ function Form() {
         
         {/* ---- INPUT TEMPERAMENT ---- */}
         <div>
-          <label>Temperamento</label>
+          <label>Temperamentos</label>
           <div className="div_input">
             <select className='select_form' name="temperamentos" onChange={handleSelect}>
               {temperamentos.map((t, i) => {
