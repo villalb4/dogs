@@ -80,7 +80,7 @@ router.get('/dogs', async(req, res, next) => {
 
 
 
-router.post('/dogs', async(req, res, next) => {
+router.post('/dogs', async(req, res) => {
   const {name, height_min, height_max, weight_min, weight_max, temperament} = req.body;
   if(!name || !height_min || !height_max || !weight_min || !weight_max) {
     return res
@@ -100,7 +100,8 @@ router.post('/dogs', async(req, res, next) => {
       .status(201)
       .send({msg: "Perro creado correctamente"})
   } catch (error) {
-    next(error)
+    // next(error)
+    console.log(error)
   }
 })
 
@@ -171,7 +172,7 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
         weight_max: dog.height_max,
         life_span_min: dog.life_span_min,
         life_span_max: dog.life_span_max,
-        temperament: dog.temperament
+        temperament: dog.temperaments
       }
     })
 

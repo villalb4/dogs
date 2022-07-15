@@ -21,14 +21,14 @@ function validar(input) {
   errors.height_max = "altura max requerida"
   }
 
-    //weight
-    if(!input.weight_min) {
-      errors.weight_min = 'peso min requerido'
-    }
+  //weight
+  if(!input.weight_min) {
+    errors.weight_min = 'peso min requerido'
+  }
   
-    if(!input.weight_max) {
+  if(!input.weight_max) {
     errors.weight_max = "peso max requerido"
-    }
+  }
 
   return errors;
 }
@@ -64,10 +64,25 @@ function Form() {
 
   function handleSubmit(e){
     e.preventDefault();
-    if(!errors) {
-      dispatch(dogPost(input))
+    if(!errors.name) {
+      try {
+        dispatch(dogPost(input))
+        alert("Perro creado correctamente")
+      } catch (error) {
+        alert("perro no creado")
+        console.log(error)
+      }
     }
-    setInput({})
+    setInput({
+      image:"",
+      name: "",
+      height_min: "",
+      height_max: "",
+      weight_min: "",
+      weight_max: "",
+      life_span: "",
+      temperament: []
+    })
   }
 
 
@@ -94,7 +109,7 @@ function Form() {
         <div>
           <label>Imagen</label>
           <div className= "div_input">
-            <input className='form_input' placeholder='Url de la imagen'/>
+            <input className='form_input' placeholder='Url de la imagen' onChange={handleChange} name="image" value={input.image}/>
           </div>
         </div>
 
@@ -103,7 +118,7 @@ function Form() {
           <div className='max'>
             <label>Altura *</label>
             <div className={errors.height_max ? "div_input error" : "div_input"}>
-              <input className='form_input min' placeholder='Max' onChange={handleChange} name="height_max" value={input.height_max} required/>
+              <input className='form_input min' placeholder='Max' onChange={handleChange} name="height_max" value={input.height_max}/>
               <span className='unidad'>CM</span>
             </div>
             {errors.height_max && (<span className='dato_incorrecto'>{errors.height_max}</span>)}
@@ -112,7 +127,7 @@ function Form() {
           <div className='min'>
             <label className='label_min'>Peso</label>
             <div className={errors.height_min ? "div_input error" : "div_input"}>
-              <input className='form_input max' placeholder='Min' onChange={handleChange} name="height_min" value={input.height_min} required/>
+              <input className='form_input max' placeholder='Min' onChange={handleChange} name="height_min" value={input.height_min}/>
               <span className='unidad'>CM</span>
             </div>
             {errors.height_min && (<span className='dato_incorrecto'>{errors.height_min}</span>)}
@@ -124,7 +139,7 @@ function Form() {
           <div className='max'>
             <label>Peso *</label>
             <div className={errors.weight_max ? "div_input error" : "div_input"}>
-              <input className='form_input min' placeholder='Max' onChange={handleChange} name="weight_max" value={input.weight_max} required/>
+              <input className='form_input min' placeholder='Max' onChange={handleChange} name="weight_max" value={input.weight_max}/>
               <span className='unidad'>KG</span>
             </div>
             {errors.weight_max && (<span className='dato_incorrecto'>{errors.weight_max}</span>)}
@@ -133,7 +148,7 @@ function Form() {
           <div className='min'>
             <label className='label_min'>Peso</label>
             <div className={errors.weight_min ? "div_input error" : "div_input"}>
-              <input className='form_input max' placeholder='Min' onChange={handleChange} name="weight_min" value={input.weight_min} required/>
+              <input className='form_input max' placeholder='Min' onChange={handleChange} name="weight_min" value={input.weight_min}/>
               <span className='unidad'>KG</span>
             </div>
             {errors.weight_min && (<span className='dato_incorrecto'>{errors.weight_min}</span>)}
@@ -145,7 +160,7 @@ function Form() {
           <div className='max'>
             <label>Años de vida</label>
             <div className={errors.life_span_max ? "div_input error" : "div_input"}>
-              <input className='form_input min_years' placeholder='Max' onChange={handleChange} name="life_span_max" value={input.life_span_max} required/>
+              <input className='form_input min_years' placeholder='Max' onChange={handleChange} name="life_span_max" value={input.life_span_max}/>
               <span className='unidad'>Años</span>
             </div>
             {errors.life_span_max && (<span className='dato_incorrecto'>{errors.life_span_max}</span>)}
@@ -154,7 +169,7 @@ function Form() {
           <div className='min'>
             <label className='label_min'>Peso</label>
             <div className={errors.life_span_min ? "div_input error" : "div_input"}>
-              <input className='form_input max_years' placeholder='Min' onChange={handleChange} name="life_span_min" value={input.life_span_min} required/>
+              <input className='form_input max_years' placeholder='Min' onChange={handleChange} name="life_span_min" value={input.life_span_min}/>
               <span className='unidad'>Años</span>
             </div>
             {errors.life_span_min && (<span className='dato_incorrecto'>{errors.life_span_min}</span>)}

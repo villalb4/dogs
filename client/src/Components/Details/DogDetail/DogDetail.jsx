@@ -4,6 +4,9 @@ import banner from '../../../images/banner.jpg';
 import './DogDetail.css';
 
 function DogDetail({dog}){
+
+  // const temp = dog?.temperament && typeof(dog?.temperament) === "string" ? dog?.temperament : temperament?.map(t => <span>{t.name}, </span>);
+
   return(
     <div className="dogDetail">
 
@@ -42,8 +45,8 @@ function DogDetail({dog}){
             </tr>
             <tr>
               <td className="table_caracteristicas table_temp">TEMPERAMENTO</td>
-              <td className="table_datos">{dog?.temperament} </td>
-              {/* <td className="table_datos">{typeof(dog?.temperament) === "string" ? dog?.temperament : dog?.temperament.map(t => t.name)}</td> */}
+              {/* <td className="table_datos">{dog?.temperament} </td> */}
+              <td className="table_datos">{typeof(dog?.temperament) === "string" ? dog?.temperament : dog?.temperament.map(t => {return ` ${t.name}`}).join(",")}</td>
             </tr>
           </table>
         </div>
