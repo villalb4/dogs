@@ -50,9 +50,34 @@ router.get('/dogs', async(req, res, next) => {
         id: dog.id,
         image: dog.image.url,
         name: dog.name,
-        weight: dog.height.metric,
+        weight_min: dog.weight.metric.slice(0, 2).trim(),
+        weight_max: dog.weight.metric.slice(-2).trim(),
         temperament: dog.temperament
       }
+    })
+
+    const validando = await apiFormateo.map(d => {
+      if(!d.weight_min || d.weight_min === "Na") {
+        if(!d.weight_max || d.weight_max === "Na") {
+          d.weight_min = "8"
+        } else {
+          d.weight_min = (d.weight_max - 2).toString();
+        }
+      }
+      
+      if(!d.weight_max || d.weight_max === "Na") {
+        if(!d.weight_min || d.weight_min === "Na") {
+          d.weight_max = "12"
+        } else {
+          d.weight_max = (parseInt(d.weight_min) + 7).toString();
+        }
+      }
+
+      if(!d.temperament) {
+        d.temperament = ["Stubborn", "Active", "Happy", "Dutiful", "Confident"]
+      }
+
+      return d
     })
     
     const dogDb = await Dog.findAll({include: Temperament});
@@ -68,7 +93,7 @@ router.get('/dogs', async(req, res, next) => {
       }
     })
 
-    const dogs = [...apiFormateo, ...dbFormateo];
+    const dogs = [...validando, ...dbFormateo];
     
     res.json(dogs)
 
@@ -154,15 +179,73 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
         image: dog.image.url,
         name: dog.name,
         weight_min: dog.weight.metric.slice(0, 2).trim(),
-        weight_max: dog.weight.metric.slice(4).trim(),
+        weight_max: dog.weight.metric.slice(-2).trim(),
         height_min: dog.height.metric.slice(0, 2).trim(),
         height_max: dog.height.metric.slice(4).trim(),
         life_span_min: dog.life_span.slice(0, 2).trim(),
-        life_span_max: dog.life_span.slice(4, 7).trim(),
+        life_span_max: dog.life_span.slice(4, -6).trim(),
         // life_span_max: parseInt(dog.life_span.slice(4).trim()),
         temperament: dog.temperament
       }
     })
+
+    const validando = await apiFormateo.map(d => {
+      if(!d.weight_min || d.weight_min === "Na") {
+        if(!d.weight_max || d.weight_max === "Na") {
+          d.weight_min = "8"
+        } else {
+          d.weight_min = (d.weight_max - 2).toString();
+        }
+      }
+      
+      if(!d.weight_max || d.weight_max === "Na") {
+        if(!d.weight_min || d.weight_min === "Na") {
+          d.weight_max = "12"
+        } else {
+          d.weight_max = (parseInt(d.weight_min) + 7).toString();
+        }
+      }
+
+      if(!d.height_min || d.weight_min === "Na") {
+        if(!d.height_max || d.weight_max === "Na") {
+          d.height_min = "7"
+        } else {
+          d.height_min = (d.height_max - 4).toString();
+        }
+      }
+
+      if(!d.height_max || d.weight_max === "Na") {
+        if(!d.height_min || d.weight_min === "Na") {
+          d.height_max = "13"
+        } else {
+          d.height_max = (parseInt(d.height_min) + 6).toString();
+        }
+      }
+
+      if(!d.life_span_max) {
+        if(!d.life_span_min){
+          d.life_span_max = "7"
+        } else {
+          d.life_span_max = (parseInt(d.life_span_min) + 4).toString();
+        }
+      }
+
+      if(!d.life_span_min) {
+        if(!d.life_span_max){
+          d.life_span_min = "7"
+        } else {
+          d.life_span_min = (parseInt(d.life_span_max) + 4).toString();
+        }
+      }
+
+      if(!d.temperament) {
+        d.temperament = "Stubborn, Active, Happy, Dutiful, Confident"
+      }
+
+      return d
+    })
+
+    console.log("AHHHHHHH",validando)
     
     const dogDb = await Dog.findAll({include: Temperament});
 
@@ -181,7 +264,7 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
       }
     })
 
-    const allDog = [...apiFormateo, ...dbFormateo];
+    const allDog = [...validando, ...dbFormateo];
 
     const dog = allDog.filter(d => d.id == idRaza)
 
