@@ -219,10 +219,10 @@ function Form() {
         <div>
           <label>Temperamento</label>
           <div className="div_input">
-            <select name="temperamentos" onChange={handleSelect}>
+            <select className='select_form' name="temperamentos" onChange={handleSelect}>
               {temperamentos.map((t, i) => {
                 return(
-                  <option key={i} value={t.id}>{t.name}</option>
+                  <option className='option_form' key={i} value={t.id}>{t.name}</option>
                 )
               })}
             </select>
