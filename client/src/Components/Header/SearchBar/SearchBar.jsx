@@ -1,10 +1,17 @@
-import React, {useState} from "react";
-import { useSelector } from "react-redux";
+import React, {useState, useEffect} from "react";
+import { useSelector, useDispatch} from "react-redux";
+import { getDogs } from "../../../Redux/actions/actions";
 import {Link} from "react-router-dom";
 import search_icon from "../../../images/search-icon.svg";
 import './SearchBar.css';
 
 function SearchBar() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getDogs())
+  }, [])
 
   const dogs = useSelector(state => state.dogs);
 
