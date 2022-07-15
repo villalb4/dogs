@@ -100,9 +100,19 @@ label {
   padding: 10px 0;
   border-radius: 8px;
   background-color: var(--naranja);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.submit:hover {
+  background-color: var(--naranja-hover);
 }
 .submit:focus {
   outline: none;
+}
+.submit.none {
+  background-color: #8b4d2a;
+  color: rgb(150, 150, 150);
+  cursor: not-allowed;
 }
 .dato_incorrecto {
   margin-left: 15px;

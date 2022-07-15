@@ -9,21 +9,27 @@ function validar(input) {
   //name
   let errors = {};
   if(!input.name) {
-    errors.name = 'Debes ponerle un nombre'
-  } 
+    errors.name = 'debes ponerle un nombre'
+  } else if(!/^[A-Z]+$/i.test(input.name)) {
+    errors.name = 'solo puede contener letras'
+  }
 
   //height
   if(!input.height_min) {
     errors.height_min = 'altura min requerida'
+  } else if(input.height_min >= input.height_max) {
+    errors.height_min= 'debe ser menor al max'
   }
 
   if(!input.height_max) {
   errors.height_max = "altura max requerida"
-  }
+  } 
 
   //weight
   if(!input.weight_min) {
     errors.weight_min = 'peso min requerido'
+  }else if(input.weight_min >= input.weight_max) {
+    errors.weight_min= 'debe ser menor al max'
   }
   
   if(!input.weight_max) {
@@ -64,29 +70,24 @@ function Form() {
 
   function handleSubmit(e){
     e.preventDefault();
-    if(!errors.name) {
+    if(!errors.name &&!errors.height_min && !errors.height_max &&!errors.weight_min && !errors.weight_max) {
       try {
         dispatch(dogPost(input))
-        alert("Perro creado correctamente")
+        setInput({
+          image:"",
+          name: "",
+          height_min: "",
+          height_max: "",
+          weight_min: "",
+          weight_max: "",
+          life_span: "",
+          temperament: []
+        })
       } catch (error) {
-        alert("perro no creado")
         console.log(error)
       }
-    }
-    setInput({
-      image:"",
-      name: "",
-      height_min: "",
-      height_max: "",
-      weight_min: "",
-      weight_max: "",
-      life_span: "",
-      temperament: []
-    })
+    } 
   }
-
-
-  // ^[a-zA-Z ]*$
 
   return(
     <div className='Form_container'>
@@ -99,7 +100,7 @@ function Form() {
           <div>
             <label>Nombre *</label>
             <div className={errors.name ? "div_input error" : "div_input"}>
-              <input className='form_input' placeholder='Eje: naruto' onChange={handleChange} name="name" value={input.name} required/>
+              <input className='form_input' placeholder='Eje: naruto' onChange={handleChange} name="name" value={input.name}/>
             </div>
             {errors.name && (<span className='dato_incorrecto'>{errors.name}</span>)}
           </div>
@@ -184,7 +185,7 @@ function Form() {
           </div>
         </div>
 
-        <input className='submit' type="submit" value="crear"/>
+        <input className={errors.name || errors.height_min || errors.height_max || errors.weight_min || errors.weight_max ? "submit none" : "submit"} type="submit" value="crear"/>
 
       </form>
     </div>

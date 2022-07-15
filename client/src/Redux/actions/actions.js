@@ -37,7 +37,7 @@ export const dogPost = (payload) => {
   return async function() {
     try {
       const response = await axios.post("http://localhost:3001/dogs", payload);
-      // return response
+      alert("perro creado correctamente")
     } catch (error) {
       console.log(error)
     }
