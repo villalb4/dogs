@@ -28,18 +28,18 @@ function DogDetail({dog}){
             </tr>
             <tr>
               <td className="table_caracteristicas">ALTURA</td>
-              <td className="table_datos">{dog?.weight_min}</td>
-              <td className="table_datos">{dog?.weight_max} Cm</td>
+              <td className="table_datos">{dog?.height_min}</td>
+              <td className="table_datos">{dog?.height_max} Cm</td>
             </tr>
             <tr>
               <td className="table_caracteristicas">PESO</td>
-              <td className="table_datos">{dog?.height_min}</td>
-              <td className="table_datos">{dog?.height_max}Kg</td>
+              <td className="table_datos">{dog?.weight_min}</td>
+              <td className="table_datos">{dog?.weight_max} Kg</td>
             </tr>
             <tr>
               <td className="table_caracteristicas">AÑOS DE VIDA</td>
               <td className="table_datos">{dog?.life_span_min}</td>
-              <td className="table_datos">{dog?.life_span_max}</td>
+              <td className="table_datos">{dog?.life_span_max} Años</td>
             </tr>
             <tr>
               <td className="table_caracteristicas table_temp">TEMPERAMENTO</td>

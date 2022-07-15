@@ -153,12 +153,13 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
         id: dog.id,
         image: dog.image.url,
         name: dog.name,
-        weight_min: parseInt(dog.weight.metric.slice(0, 2).trim()),
-        weight_max: parseInt(dog.weight.metric.slice(4).trim()),
-        height_min: parseInt(dog.height.metric.slice(0, 2).trim()),
-        height_max: parseInt(dog.height.metric.slice(4).trim()),
-        life_span_min: parseInt(dog.life_span.slice(0, 2).trim()),
-        life_span_max: parseInt(dog.life_span.slice(4).trim()),
+        weight_min: dog.weight.metric.slice(0, 2).trim(),
+        weight_max: dog.weight.metric.slice(4).trim(),
+        height_min: dog.height.metric.slice(0, 2).trim(),
+        height_max: dog.height.metric.slice(4).trim(),
+        life_span_min: dog.life_span.slice(0, 2).trim(),
+        life_span_max: dog.life_span.slice(4, 7).trim(),
+        // life_span_max: parseInt(dog.life_span.slice(4).trim()),
         temperament: dog.temperament
       }
     })
@@ -170,10 +171,10 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
         id: dog.id,
         image: dog.image,
         name: dog.name,
+        weight_min: dog.weight_min,
+        weight_max: dog.weight_max,
         height_min: dog.height_min,
         height_max: dog.height_max,
-        weight_min: dog.height_min,
-        weight_max: dog.height_max,
         life_span_min: dog.life_span_min,
         life_span_max: dog.life_span_max,
         temperament: dog.temperaments

@@ -11,30 +11,44 @@ function validar(input) {
   let errors = {};
   if(!input.name) {
     errors.name = 'debes ponerle un nombre'
-  } else if(!/^[A-Z]+$/i.test(input.name)) {
+  } else if(!/[A-Z]+$/i.test(input.name)) {
     errors.name = 'solo puede contener letras y sin espacios'
-  }
+  } 
+  // /^[A-Z]+$/i
 
   //height
+  if(!input.height_max) {
+    errors.height_max = "altura max requerida"
+  } else if(input.height_max > 85) {
+    errors.height_max = 'debe ser menor a 85 CM' 
+  }
+
   if(!input.height_min) {
     errors.height_min = 'altura min requerida'
   } else if(input.height_min >= input.height_max) {
-    errors.height_min= 'debe ser menor al max'
+    errors.height_min = 'debe ser menor al max'
   }
 
-  if(!input.height_max) {
-  errors.height_max = "altura max requerida"
-  } 
 
-  //weight
-  if(!input.weight_min) {
-    errors.weight_min = 'peso min requerido'
-  }else if(input.weight_min >= input.weight_max) {
-    errors.weight_min= 'debe ser menor al max'
-  }
-  
+  //weight  
   if(!input.weight_max) {
     errors.weight_max = "peso max requerido"
+  } else if(input.weight_max > 90) {
+    errors.weight_max = 'debe ser menor a 90 KG'
+  }
+
+  if(!input.weight_min) {
+    errors.weight_min = 'peso min requerido'
+  } else if(input.weight_min >= input.weight_max) {
+    errors.weight_min= 'debe ser menor al max'
+  }
+
+
+  //life_span
+  if(input.life_span_max > 24) {
+    errors.life_span_max = 'debe ser menor a 24 Años'
+  } else if(input.life_span_min >= input.life_span_max) {
+    errors.life_span_min = 'debe ser menor al max'
   }
 
   return errors;
@@ -79,14 +93,15 @@ function Form() {
   }
 
   function handleSelect(e){
-    
-    const selectName = temperamentos.filter(t => t.name === e.target.value)
-    setSelectNameState(
-      ...selectNameState, selectName)
     setInput({
       ...input,
       temperament: [...input.temperament, e.target.value]
     })
+
+    const selectName = e.target.value;
+    if(selectName === "default") return;
+    setInput({...input , temperament:[...input.temperament, selectName]})
+    setSelectNameState([...selectNameState, temperamentos.find(e => e.id === parseInt(selectName))])
   }
 
   function handleSubmit(e){
@@ -104,6 +119,7 @@ function Form() {
           life_span: "",
           temperament: []
         })
+        setSelectNameState([])
       } catch (error) {
         console.log(error)
       }
@@ -203,7 +219,7 @@ function Form() {
         <div>
           <label>Temperamento</label>
           <div className="div_input">
-            <select name="temperamentos" multiple onChange={handleSelect}>
+            <select name="temperamentos" onChange={handleSelect}>
               {temperamentos.map((t, i) => {
                 return(
                   <option key={i} value={t.id}>{t.name}</option>
@@ -212,9 +228,9 @@ function Form() {
             </select>
           </div>
           <ul className='ul_temp'>
-            {input.selectNameState.map((e, i) => {
+            {selectNameState.map((e, i) => {
               return(
-              <li className='li_temp' key={i}>{e}</li>
+              <li className='li_temp' key={i}>{e.name}</li>
               )
             })}
           </ul>
