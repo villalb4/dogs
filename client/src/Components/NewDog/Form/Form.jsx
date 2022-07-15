@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import React, {useState, useEffect} from 'react';
+import { useDispatch, useSelector} from 'react-redux';
 import {dogPost} from '../../../Redux/actions/actions';
+import { getTemperament } from '../../../Redux/actions/actions';
 import './Form.css';
 
 
@@ -11,7 +12,7 @@ function validar(input) {
   if(!input.name) {
     errors.name = 'debes ponerle un nombre'
   } else if(!/^[A-Z]+$/i.test(input.name)) {
-    errors.name = 'solo puede contener letras'
+    errors.name = 'solo puede contener letras y sin espacios'
   }
 
   //height
@@ -42,6 +43,13 @@ function validar(input) {
 
 function Form() {
 
+  useEffect(()=> {
+    dispatch(getTemperament())
+  }, [])
+
+  const temperamentos = useSelector(state => state.temperaments)
+  console.log(temperamentos)
+
   const dispatch = useDispatch()
 
   const [errors, setErrors] = useState({});
@@ -56,6 +64,8 @@ function Form() {
     life_span: "",
     temperament: []
   });
+
+  const [selectNameState, setSelectNameState] = useState([])
   
   function handleChange(e){
     setInput({
@@ -68,9 +78,20 @@ function Form() {
     }))
   }
 
+  function handleSelect(e){
+    
+    const selectName = temperamentos.filter(t => t.name === e.target.value)
+    setSelectNameState(
+      ...selectNameState, selectName)
+    setInput({
+      ...input,
+      temperament: [...input.temperament, e.target.value]
+    })
+  }
+
   function handleSubmit(e){
     e.preventDefault();
-    if(!errors.name &&!errors.height_min && !errors.height_max &&!errors.weight_min && !errors.weight_max) {
+    if(!errors.name && !errors.height_min && !errors.height_max &&!errors.weight_min && !errors.weight_max) {
       try {
         dispatch(dogPost(input))
         setInput({
@@ -88,6 +109,7 @@ function Form() {
       }
     } 
   }
+
 
   return(
     <div className='Form_container'>
@@ -181,8 +203,21 @@ function Form() {
         <div>
           <label>Temperamento</label>
           <div className="div_input">
-            <input className='form_input'/>
+            <select name="temperamentos" multiple onChange={handleSelect}>
+              {temperamentos.map((t, i) => {
+                return(
+                  <option key={i} value={t.id}>{t.name}</option>
+                )
+              })}
+            </select>
           </div>
+          <ul className='ul_temp'>
+            {input.selectNameState.map((e, i) => {
+              return(
+              <li className='li_temp' key={i}>{e}</li>
+              )
+            })}
+          </ul>
         </div>
 
         <input className={errors.name || errors.height_min || errors.height_max || errors.weight_min || errors.weight_max ? "submit none" : "submit"} type="submit" value="crear"/>

@@ -30,11 +30,11 @@ const rootReducer = (state = initialState, {type, payload}) => {
     //     ...state,
     //     dogs: filtro
     //   }
-    // case GET_TEMPERAMENT:
-    //   return {
-    //     ...state,
-    //     temperaments: payload
-    //   }
+    case GET_TEMPERAMENT:
+      return {
+        ...state,
+        temperaments: payload
+      }
     default:
       return state
   }

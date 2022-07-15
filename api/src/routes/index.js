@@ -94,7 +94,7 @@ router.post('/dogs', async(req, res) => {
       where: {id : temperament}
     })
 
-    await dog.addTemperament(tempDb)
+    await dog.addTemperament(temperament)
 
     return res
       .status(201)
@@ -111,7 +111,6 @@ router.post('/dogs', async(req, res) => {
 router.get('/temperaments', async(req, res, next)=> {
   try {
     const temperamentos = (await axios.get(`${API}?api_key=${API_KEY}`)).data
-
     const formateo = temperamentos.map(t => t.temperament)
     const uniendo = formateo.filter(r => r != null)
     .join().split(", ").join().split(",")
@@ -123,9 +122,14 @@ router.get('/temperaments', async(req, res, next)=> {
 
     resultado = resultado.map(t => {return{name: t}})
 
-    await Temperament.bulkCreate(resultado)
+    
+    if(await Temperament.findAll().length === 0) {
+      await Temperament.bulkCreate(resultado)
+    } 
+    const temper = await Temperament.findAll()
+      console.log(temper)
+    res.send(temper)
 
-    res.send({msg: "Datos agregados correctamente"})
   } catch (error) {
     next(error)
   }

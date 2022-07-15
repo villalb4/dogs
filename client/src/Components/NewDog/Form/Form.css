@@ -91,6 +91,15 @@ label {
   letter-spacing: 0px;
   color: var(--gris-placeholder);
 }
+.ul_temp {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--naranja);
+}
 .submit {
   width: 100%;
   border: none;
