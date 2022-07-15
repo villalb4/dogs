@@ -5,8 +5,6 @@ import './DogDetail.css';
 
 function DogDetail({dog}){
 
-  // const temp = dog?.temperament && typeof(dog?.temperament) === "string" ? dog?.temperament : temperament?.map(t => <span>{t.name}, </span>);
-
   return(
     <div className="dogDetail">
 

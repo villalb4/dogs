@@ -14,10 +14,6 @@ function Details(props) {
     dispatch(getDetail(id))
   },[dispatch, id])
 
-  // const [dogs, setDog] = useState(dog[0])
-
-  // console.log(dogs)
-
   return(
     <div>
       <Header />
