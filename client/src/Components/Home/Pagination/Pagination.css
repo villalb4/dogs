@@ -1,0 +1,19 @@
+.pagination_component {
+  
+}
+.pagination {
+  display: flex;
+  list-style: none;
+  gap: 5px;
+}
+.pagination_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aqua;
+  height: 30px;
+  width: 30px;
+}
+.page_link {
+  color: red;
+}
