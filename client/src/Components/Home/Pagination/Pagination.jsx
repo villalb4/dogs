@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import "./Pagination.css"
+import "./Pagination.css";
 
-function Pagination({postPerPage, totalPosts, paginate, currentPage, setCurrentPage}) {
+function Pagination({dogsPerPage, totalPosts, paginate, currentPage, setCurrentPage}) {
 
   const [pageNumberLimit, setPageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
@@ -11,7 +11,7 @@ function Pagination({postPerPage, totalPosts, paginate, currentPage, setCurrentP
   
   const pageNumbers = [];
 
-  for(let i = 1; i <= Math.ceil(totalPosts / postPerPage); i++) {
+  for(let i = 1; i <= Math.ceil(totalPosts / dogsPerPage); i++) {
     pageNumbers.push(i)
   }
 

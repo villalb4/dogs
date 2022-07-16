@@ -44,7 +44,6 @@ router.get('/search', async(req, res, next) => {
 router.get('/dogs', async(req, res, next) => {
   try {
     const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
-    //formateando la api para traer solo los datos necesarios para la ruta pricipal
     const apiFormateo = dogApi.map(dog => {
       return {
         id: dog.id,
@@ -250,8 +249,6 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
       return d
     })
 
-    console.log("AHHHHHHH",validando)
-    
     const dogDb = await Dog.findAll({include: Temperament});
 
     const dbFormateo = await dogDb.map(dog => {

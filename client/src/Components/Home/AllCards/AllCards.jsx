@@ -9,26 +9,29 @@ import './AllCards.css';
 
 function AllCards() {
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage] = useState(8);
-
   const dispatch = useDispatch();
   const dogs = useSelector(state => state.dogs);
-
+  
   useEffect(() => {
     dispatch(getDogs())
   }, [dispatch])
 
-  const indexOfLastPost = currentPage * postPerPage;
-  const indexOfFirstPost = indexOfLastPost - postPerPage;
-  const currentPost = dogs.slice(indexOfFirstPost, indexOfLastPost)
+
+  // ------ PAGINADO ------
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dogsPerPage] = useState(8);
+
+  const indexOfLastDog = currentPage * dogsPerPage;
+  const indexOfFirstDog = indexOfLastDog - dogsPerPage;
+  const CurrentDog = dogs.slice(indexOfFirstDog, indexOfLastDog)
   const paginate =(page) => {
     setCurrentPage(page)
   }
 
+  // ------ CARDS ------
   function cards() {
     return (
-      currentPost.map((dog, i) => (
+      CurrentDog.map((dog, i) => (
         <Link to={`/home/${dog.id}`} key={i} className="link_all_cards">
           <Card 
             image={dog.image} 
@@ -48,7 +51,7 @@ function AllCards() {
         {dogs.length !== 0 ? cards() : <Loader />}
       </div>
       <Pagination 
-        postPerPage={postPerPage} 
+        dogsPerPage={dogsPerPage} 
         totalPosts={dogs.length} 
         paginate={paginate} 
         currentPage={currentPage}
