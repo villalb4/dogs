@@ -44,7 +44,6 @@ function DogDetail({dog}){
             </tr>
             <tr>
               <td className="table_caracteristicas table_temp">TEMPERAMENTO</td>
-              {/* <td colSpan="2" className="table_datos temp">{typeof(dog?.temperament) === "string" ? dog?.temperament : dog?.temperament.map(t => {return ` ${t.name}`}).join(",")}</td> */}
               <td colSpan="2" className="table_datos temp">{dog?.temperament}</td>
             </tr>
           </table>

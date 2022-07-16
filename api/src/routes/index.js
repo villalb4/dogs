@@ -94,10 +94,11 @@ router.get('/dogs', async(req, res, next) => {
 
     const validandoDogsDb = dbFormateo.map(d => {
       if(!d.image) {
-        d.image = "https://cdn2.benzinga.com/files/imagecache/1024x768xUP/images/story/2012/dog-1411236_1920.jpg"
+        d.image = "https://www.postable.com/blog/wp-content/uploads/2018/06/puppy2.jpg"
       }
       if(Array.isArray(d.temperament)) {
-        d.temperament = d.temperament.map(t => t.name).toString()
+        d.temperament = d.temperament.map(t => t.name)
+        d.temperament = d.temperament.join(", ")
       }
       return d
     })
@@ -278,10 +279,11 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
 
     const validandoDogsDb = dbFormateo.map(d => {
       if(!d.image) {
-        d.image = "https://cdn2.benzinga.com/files/imagecache/1024x768xUP/images/story/2012/dog-1411236_1920.jpg"
+        d.image = "https://www.postable.com/blog/wp-content/uploads/2018/06/puppy2.jpg"
       }
       if(Array.isArray(d.temperament)) {
-        d.temperament = d.temperament.map(t => t.name).toString()
+        d.temperament = d.temperament.map(t => t.name)
+        d.temperament = d.temperament.join(", ")
       }
       return d
     })

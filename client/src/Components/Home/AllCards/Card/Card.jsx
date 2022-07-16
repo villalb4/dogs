@@ -15,7 +15,7 @@ function Card({image, name, temperament, weight_min, weight_max}) {
         </div>
         <div>
           <p className='card_temperament_dog'>
-          {typeof(temperament) === "string" ? temperament : temperament.map(t => {return ` ${t.name}`}).join(",")}
+            {temperament}
           </p>
         </div>
       </div>
