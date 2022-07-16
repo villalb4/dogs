@@ -2,7 +2,7 @@ import React from 'react';
 import imageDogDefault from '../../../../images/image-dog-default.jpg'
 import './Card.css';
 
-function Card({image, name ,temperament, weight_min, weight_max}) {
+function Card({image, name, temperament, weight_min, weight_max}) {
   return(
     <div className='card'>
       <div className='div_image_card'>

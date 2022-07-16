@@ -147,12 +147,17 @@ router.get('/temperaments', async(req, res, next)=> {
 
     resultado = resultado.map(t => {return{name: t}})
 
+    // console.log("RESULTADO: ", resultado)
+
+    const allTemps = await Temperament.findAll()
+
     
-    if(await Temperament.findAll().length === 0) {
+    
+    if(allTemps.length === 0) {
       await Temperament.bulkCreate(resultado)
     } 
     const temper = await Temperament.findAll()
-      console.log(temper)
+      
     res.send(temper)
 
   } catch (error) {
