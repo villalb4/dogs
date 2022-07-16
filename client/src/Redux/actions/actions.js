@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const GET_DOGS = 'GET_DOGS';
 export const GET_DETAILS = 'GET_DETAILS';
-// export const FILTER_DOG = 'FILTER_DOG';
+export const FILTER_DOG = 'FILTER_DOG';
 export const GET_TEMPERAMENT = 'GET_TEMPERAMENT' 
 
 export const getDogs = () => {
@@ -36,7 +36,7 @@ export const getDetail = (id) => {
 export const dogPost = (payload) => {
   return async function() {
     try {
-      const response = await axios.post("http://localhost:3001/dogs", payload);
+      await axios.post("http://localhost:3001/dogs", payload);
       alert("perro creado correctamente")
     } catch (error) {
       console.log(error)
@@ -61,10 +61,9 @@ export const getTemperament = () => {
   }
 }
 
-// export const filterDog = (value) => {
-//   console.log(value)
-//   return {
-//     type: FILTER_DOG,
-//     payload: value
-//   }
-// }
+export const filterDog = (payload) => {
+  return {
+    type: FILTER_DOG,
+    payload
+  }
+}

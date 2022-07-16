@@ -55,7 +55,7 @@ router.get('/dogs', async(req, res, next) => {
       }
     })
 
-    const validando = await apiFormateo.map(d => {
+    const validandoDogsApi = await apiFormateo.map(d => {
       if(!d.weight_min || d.weight_min === "Na") {
         if(!d.weight_max || d.weight_max === "Na") {
           d.weight_min = "8"
@@ -92,7 +92,17 @@ router.get('/dogs', async(req, res, next) => {
       }
     })
 
-    const dogs = [...validando, ...dbFormateo];
+    const validandoDogsDb = dbFormateo.map(d => {
+      if(!d.image) {
+        d.image = "https://cdn2.benzinga.com/files/imagecache/1024x768xUP/images/story/2012/dog-1411236_1920.jpg"
+      }
+      if(Array.isArray(d.temperament)) {
+        d.temperament = d.temperament.map(t => t.name).toString()
+      }
+      return d
+    })
+
+    const dogs = [...validandoDogsApi, ...validandoDogsDb];
     
     res.json(dogs)
 
@@ -193,7 +203,7 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
       }
     })
 
-    const validando = await apiFormateo.map(d => {
+    const validandoDogApi = await apiFormateo.map(d => {
       if(!d.weight_min || d.weight_min === "Na") {
         if(!d.weight_max || d.weight_max === "Na") {
           d.weight_min = "8"
@@ -266,7 +276,17 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
       }
     })
 
-    const allDog = [...validando, ...dbFormateo];
+    const validandoDogsDb = dbFormateo.map(d => {
+      if(!d.image) {
+        d.image = "https://cdn2.benzinga.com/files/imagecache/1024x768xUP/images/story/2012/dog-1411236_1920.jpg"
+      }
+      if(Array.isArray(d.temperament)) {
+        d.temperament = d.temperament.map(t => t.name).toString()
+      }
+      return d
+    })
+
+    const allDog = [...validandoDogApi, ...validandoDogsDb];
 
     const dog = allDog.filter(d => d.id == idRaza)
 

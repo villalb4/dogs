@@ -11,7 +11,8 @@ function DogDetail({dog}){
       <div className="left">
         <div className="profile">
           <div className="div_dog_profile">
-            <img className="image_dog_profile" src={dog?.image ? dog?.image : imageDogDefault} alt="dog"/>
+            {/* <img className="image_dog_profile" src={dog?.image ? dog?.image : imageDogDefault} alt="dog"/> */}
+            <img className="image_dog_profile" src={dog?.image} alt="dog"/>
           </div>
           <div className="div_dog_name">
             <h2 className="name_dog">{dog?.name}</h2>
@@ -43,7 +44,8 @@ function DogDetail({dog}){
             </tr>
             <tr>
               <td className="table_caracteristicas table_temp">TEMPERAMENTO</td>
-              <td colSpan="2" className="table_datos temp">{typeof(dog?.temperament) === "string" ? dog?.temperament : dog?.temperament.map(t => {return ` ${t.name}`}).join(",")}</td>
+              {/* <td colSpan="2" className="table_datos temp">{typeof(dog?.temperament) === "string" ? dog?.temperament : dog?.temperament.map(t => {return ` ${t.name}`}).join(",")}</td> */}
+              <td colSpan="2" className="table_datos temp">{dog?.temperament}</td>
             </tr>
           </table>
         </div>

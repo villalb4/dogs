@@ -4,15 +4,16 @@ import {useDispatch, useSelector} from 'react-redux';
 
 function FiltroTemperamento() {
 
-  // const dogs = useSelector(state => state.dogs)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getTemperament())
+  }, [dispatch])
+
   const temp = useSelector(state => state.temperaments)
 
   
-  const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   dispatch(getTemperament())
-  // }, [dispatch])
 
   // console.log("ACAAAA :",temp)
 
@@ -26,9 +27,12 @@ function FiltroTemperamento() {
       Filtros
       {/* <select onChange={handleFilter}> */}
       <select>
-        <option value="Temperament">Temperamento</option>
-        <option value="">API</option>
-        <option value="Dog">Base de datos</option>
+        <option value="All">All Temperaments</option>
+        {temp && temp.map((t, i) => {
+          return (
+            <option value={t.id} key={i}>{t.name}</option>
+          )
+        })}
       </select>
     </div>
   )
