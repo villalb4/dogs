@@ -15,23 +15,6 @@ function Pagination({postPerPage, totalPosts, paginate, currentPage, setCurrentP
     pageNumbers.push(i)
   }
 
-  
-
-  // return(
-  //   <div className="pagination_component">
-  //     <ul className="pagination">
-  //       {pageNumbers && pageNumbers.map((page, i) => {
-  //         return(
-  //           <li key={i} className="pagination_item">
-  //             <span className={currentPage === page ? "page active" : "page"} onClick={() => paginate(page)}>{page}</span>
-  //           </li>
-  //         )
-  //       })}
-  //     </ul>
-  //   </div>
-  // )
-
-
   function handleNext() {
     if(currentPage !== pageNumbers.length){
       setCurrentPage(currentPage + 1)
@@ -44,13 +27,14 @@ function Pagination({postPerPage, totalPosts, paginate, currentPage, setCurrentP
   }
 
   function handlePrev() {
-    if(currentPage != 1) {
+    if(currentPage !== 1) {
       setCurrentPage(currentPage - 1)
-    }
 
-    if((currentPage - 1) % pageNumberLimit == 0) {
-      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+      if((currentPage - 1) % pageNumberLimit == 0) {
+        setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+        setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+      }
+
     }
   }
 
@@ -58,7 +42,7 @@ function Pagination({postPerPage, totalPosts, paginate, currentPage, setCurrentP
   return(
     <div className="pagination_component">
       <ul className="pagination">
-        <button onClick={handlePrev}>prev</button>
+        <button className="page" onClick={handlePrev}>prev</button>
         {pageNumbers && pageNumbers.map((page, i) => {
           if(page < maxPageNumberLimit+1 && page > minPageNumberLimit) {
             return(
@@ -70,13 +54,10 @@ function Pagination({postPerPage, totalPosts, paginate, currentPage, setCurrentP
             return null
           }
         })}
-        <button onClick={handleNext}>ant</button>
+        <button className="page" onClick={handleNext}>ant</button>
       </ul>
     </div>
   )
-  
-
-  
 }
 
 export default Pagination;
