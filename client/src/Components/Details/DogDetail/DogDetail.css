@@ -43,8 +43,8 @@
 }
 table {
   max-width: 526px;
-  width: 100%;
   border-collapse: collapse;
+  width: 100%;
 }
 th {
   color: var(--azul-oscuro);
