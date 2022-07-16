@@ -9,6 +9,7 @@ import './AllCards.css';
 
 function AllCards() {
 
+  
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(8);
 
@@ -47,7 +48,13 @@ function AllCards() {
       <div className='AllCards'>
         {dogs.length !== 0 ? cards() : <Loader />}
       </div>
-      <Pagination postPerPage={postPerPage} totalPosts={dogs.length} paginate={paginate}/>
+      <Pagination 
+        postPerPage={postPerPage} 
+        totalPosts={dogs.length} 
+        paginate={paginate} 
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   )
 }
