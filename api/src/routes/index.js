@@ -74,7 +74,7 @@ router.get('/dogs', async(req, res, next) => {
       }
 
       if(!d.temperament) {
-        d.temperament = ["Stubborn", "Active", "Happy", "Dutiful", "Confident"]
+        d.temperament = "Stubborn, Active, Happy, Dutiful, Confident"
       }
 
       return d

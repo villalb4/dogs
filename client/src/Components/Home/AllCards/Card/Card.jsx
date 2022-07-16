@@ -15,10 +15,7 @@ function Card({image, name ,temperament, weight_min, weight_max}) {
         </div>
         <div>
           <p className='card_temperament_dog'>
-            {
-              temperament ? typeof(temperament) === "string" ? temperament : temperament?.map(t => <span>{t.name}, </span>)
-              : <span>Loyal, Bold, Calm, Intelligent,</span>
-            } 
+          {typeof(temperament) === "string" ? temperament : temperament.map(t => {return ` ${t.name}`}).join(",")}
           </p>
         </div>
       </div>

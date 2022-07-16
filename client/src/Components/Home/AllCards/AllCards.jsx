@@ -22,7 +22,6 @@ function AllCards() {
           <Card 
             image={dog.image} 
             name={dog.name} 
-            weight={dog.weight}
             weight_min={dog.weight_min}
             weight_max={dog.weight_max}
             temperament={dog.temperament} 
