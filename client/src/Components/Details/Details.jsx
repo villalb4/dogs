@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import Header from '../Header/Header';
 import DogDetail from './DogDetail/DogDetail';
-import {getDetail} from '../../Redux/actions/actions'
+import {getDetail} from '../../Redux/actions/actions';
+import Footer from '../Footer/Footer';
 
 function Details(props) {
 
@@ -18,6 +19,7 @@ function Details(props) {
     <div>
       <Header />
       <DogDetail dog={dog[0]}/>
+      <Footer />
     </div>
   )
 }

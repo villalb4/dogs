@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./LandingPage.module.css";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import Footer from "../Footer/Footer";
 import hero_desktop from "../../images/hero-desktop.png";
 import hero_desktop_responsive from "../../images/hero-desktop-responsive.png";
 import hero_mobile from "../../images/hero-mobile.png";
@@ -66,6 +67,7 @@ function LandingPage() {
           <p className={s.funcion_desc}>llevalos <br /> siempre contigo</p>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
