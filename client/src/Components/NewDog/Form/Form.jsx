@@ -75,7 +75,8 @@ function Form() {
     height_max: "",
     weight_min: "",
     weight_max: "",
-    life_span: "",
+    life_span_min: "",
+    life_span_max: "",
     temperament: []
   });
 
@@ -119,7 +120,8 @@ function Form() {
           height_max: "",
           weight_min: "",
           weight_max: "",
-          life_span: "",
+          life_span_min: "",
+          life_span_max: "",
           temperament: []
         })
         setSelectNameState([])
