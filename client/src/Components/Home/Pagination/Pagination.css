@@ -1,5 +1,5 @@
 .pagination_component {
-  
+  margin: 50px 0;
 }
 .pagination {
   display: flex;
@@ -7,13 +7,23 @@
   gap: 5px;
 }
 .pagination_item {
+  background-color: var(--paginado);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.page_link {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: aqua;
+  font-weight: 500;
+  color: var(--azul-oscuro);
   height: 30px;
   width: 30px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
-.page_link {
-  color: red;
+.page_link:hover,
+.page_link:focus {
+  background-color: var(--naranja);
+  color: var(--blanco);
 }
