@@ -42,7 +42,7 @@ function Pagination({postPerPage, totalPosts, paginate, currentPage, setCurrentP
   return(
     <div className="pagination_component">
       <ul className="pagination">
-        <button className="page" onClick={handlePrev}>prev</button>
+        <button className="page" onClick={handlePrev}>Prev</button>
         {pageNumbers && pageNumbers.map((page, i) => {
           if(page < maxPageNumberLimit+1 && page > minPageNumberLimit) {
             return(
@@ -54,7 +54,7 @@ function Pagination({postPerPage, totalPosts, paginate, currentPage, setCurrentP
             return null
           }
         })}
-        <button className="page" onClick={handleNext}>ant</button>
+        <button className="page" onClick={handleNext}>Next</button>
       </ul>
     </div>
   )
