@@ -55,8 +55,8 @@ function validar(input) {
 
 
   //life_span
-  if(input.life_span_max > 25) {
-    errors.life_span_max = 'debe ser menor a 25 Años'
+  if(input.life_span_max > 20) {
+    errors.life_span_max = 'debe ser menor a 20 Años'
   } else if(!/[0-9]+$/.test(input.life_span_max)) {
     errors.life_span_max = 'solo puede contener numeros'
   }
