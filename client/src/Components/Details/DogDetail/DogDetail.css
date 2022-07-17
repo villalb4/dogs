@@ -39,7 +39,7 @@
 }
 
 .table_container {
-  margin: 44px 0 100px;
+  margin: 44px 0 0;
 }
 table {
   max-width: 526px;
@@ -74,7 +74,7 @@ th, td {
 }
 .div_banner {
   max-width: 400px;
-  height: 653px;
+  height: 607px;
   overflow: hidden;
   border-radius: 10px;
 }
