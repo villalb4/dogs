@@ -38,6 +38,11 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING
+    },
+    creadoEnDB: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
     }
   }, {timestamps: false});
 };

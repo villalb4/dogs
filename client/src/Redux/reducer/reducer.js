@@ -1,4 +1,4 @@
-import { GET_DOGS , GET_DETAILS , FILTER_DOG, GET_TEMPERAMENT } from "../actions/actions";
+import { GET_DOGS , GET_DETAILS , GET_TEMPERAMENT, DOG_POST ,FILTER_DOG, FILTER_CREATED} from "../actions/actions";
 
 const initialState = {
   dogs: [],
@@ -20,10 +20,14 @@ const rootReducer = (state = initialState, {type, payload}) => {
         ...state,
         details: payload
       }
-
-    case 'DOG_POST':
+    case DOG_POST:
       return {
         ...state
+      }
+    case GET_TEMPERAMENT:
+      return {
+        ...state,
+        temperaments: payload
       }
     case FILTER_DOG:
       const allDogs = state.allDogsFilter;
@@ -32,11 +36,14 @@ const rootReducer = (state = initialState, {type, payload}) => {
         ...state,
         dogs: filtro
       }
-    case GET_TEMPERAMENT:
+    case FILTER_CREATED:
+      const allDogsFilter = state.allDogsFilter;
+      const createFilter = payload === 'creados' ?  allDogsFilter.filter(d => d.creadoEnDB) : allDogsFilter.filter(d => !d.creadoEnDB);
       return {
         ...state,
-        temperaments: payload
+        dogs: payload === "All" ? allDogsFilter : createFilter
       }
+    
     default:
       return state
   }

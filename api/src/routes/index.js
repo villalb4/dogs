@@ -88,7 +88,8 @@ router.get('/dogs', async(req, res, next) => {
         name: dog.name,
         weight_min: dog.weight_min,
         weight_max: dog.weight_max,
-        temperament: dog.temperaments
+        temperament: dog.temperaments,
+        creadoEnDB: dog.creadoEnDB
       }
     })
 
