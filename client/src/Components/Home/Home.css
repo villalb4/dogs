@@ -7,3 +7,30 @@
   justify-content: space-between;
   margin-bottom: 55px;
 }
+
+.div_filtro_ordernamineto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: aqua;
+}
+.div_ordernamiento {
+  display: flex;
+  gap: 5px;
+  font-size: 18px;
+  max-width: 240px;
+}
+.ordenar_text {
+  /* font-size: 20px; */
+  font-weight: 600;
+  color: var(--gris-claro);
+}
+.select_ordernamiento {
+  border: none;
+  cursor: pointer;
+  max-width: 90px;
+  width: 100%;
+}
+.select_ordernamiento:focus {
+  outline: none;
+}

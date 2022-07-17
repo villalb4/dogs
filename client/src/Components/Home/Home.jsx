@@ -12,7 +12,18 @@ function Home() {
       <Header />
       <div className='home_options'>
         <ButtonCreateDog />
-        <Filtros />
+        <div className='div_filtro_ordernamineto'>
+          <Filtros />
+          <div className='div_ordernamiento'>
+            <span className='ordenar_text'>Ordernar por :</span>
+            <select className='select_ordernamiento'>
+              <option value="">nombe (asc)</option>
+              <option value="">nombe (des)</option>
+              <option value="">peso (asc)</option>
+              <option value="">peso (des)</option>
+            </select>
+          </div>
+        </div>
       </div>
       <AllCards />
       <Footer />
