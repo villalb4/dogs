@@ -78,7 +78,6 @@ function Form() {
   }, [])
 
   const temperamentos = useSelector(state => state.temperaments)
-  console.log(temperamentos)
 
   const dispatch = useDispatch()
 
