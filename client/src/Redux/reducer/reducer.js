@@ -27,7 +27,6 @@ const rootReducer = (state = initialState, {type, payload}) => {
       }
     case FILTER_DOG:
       const allDogs = state.allDogsFilter;
-      console.log(payload)
       const filtro = payload === 'All' ? allDogs : allDogs.filter(e => e.temperament.includes(payload))
       return {
         ...state,
