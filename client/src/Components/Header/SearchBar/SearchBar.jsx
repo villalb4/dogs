@@ -15,7 +15,7 @@ function SearchBar() {
 
   const dogs = useSelector(state => state.dogs);
 
-  const [dataResult, setDataResult] = useState([]);
+  // const [dataResult, setDataResult] = useState([]);
   const [nameDog, setNameDog] = useState('')
 
   // function handleChange(e){
@@ -26,31 +26,26 @@ function SearchBar() {
   //   } else setDataResult([])
   // }
 
-  function handleClick(){
+  function handleChange(e){
+    setNameDog(e.target.value)
     if(nameDog) {
       dispatch(searchDogs(nameDog))
-      setNameDog('')
     }
   }
 
-  function handleChange(e){
-    setNameDog(e.target.value)
-    // if(nameDog) {
-    //   dispatch(searchDogs(nameDog))
-    // }
-  }
+
 
   return(
     <div className="searchBar_Container">
       <div className="divInput_SearchBar">
-        <button className="button_search" onClick={handleClick}>
+        <div className="div_button_search">
           <img className="searchIcon" src={search_icon} alt="serach" />
-        </button>
-          <input className="searchBar" type="text" placeholder="Buscar" onChange={handleChange} value={nameDog}/>
+        </div>
+        <input className="searchBar" type="text" placeholder="Buscar" onChange={handleChange} value={nameDog}/>
       </div>
 
-      {dataResult.length !== 0 && (<div className="divSearchBar_Results">
-        {dataResult.slice(0, 14).map((d, i) => {
+      {nameDog.length !== 0 && (<div className="divSearchBar_Results">
+        {dogs.slice(0, 14).map((d, i) => {
           return (
             <Link to={`/home/${d.id}`} className="results" key={i}>
               {/* <div className="div_imageResult"><img className="image_result" src={d.image} alt="result img"/></div> */}

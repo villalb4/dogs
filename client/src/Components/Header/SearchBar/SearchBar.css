@@ -1,14 +1,13 @@
 .divInput_SearchBar {
   display: flex;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
   justify-content: space-between;
   align-items: center;
   background-color: var(--gris-search-bar);
   border-radius: 10px;
-  /* max-width: 240px; */
   width: 240px;
   max-height: 50px;
-  padding: 8px 8px 8px 12px;
+  padding: 8px;
   overflow: hidden;
 }
 .searchBar {
@@ -31,10 +30,9 @@
 .searchBar:focus {
   outline: none;
 }
-.button_search {
-  padding: 7px 5px 3px;
-  border: none;
-  cursor: pointer;
+.div_button_search {
+  padding: 7px 10px 3px 7px;
+  /* background-color: aqua; */
 }
 .searchIcon {
   width: 20px;
