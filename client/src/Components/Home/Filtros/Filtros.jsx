@@ -19,9 +19,17 @@ function Filtros() {
       </div>
       {
         open && 
-        <div className="div_filtros">
-          <FiltroCreado />
-          <FiltroTemperamento />
+        <div className="div_filtros_relative">  
+          <div className="div_filtros">
+            <div>
+              <span>Creado en</span>
+              <FiltroCreado />
+            </div>
+            <div>
+              Temperamentos
+              <FiltroTemperamento />
+            </div>
+          </div>
         </div>
       }
     </div>
