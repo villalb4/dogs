@@ -1,4 +1,4 @@
-import { GET_DOGS , GET_DETAILS , GET_TEMPERAMENT, DOG_POST ,FILTER_DOG, FILTER_CREATED} from "../actions/actions";
+import { GET_DOGS , GET_DETAILS , GET_TEMPERAMENT, DOG_POST ,FILTER_DOG, FILTER_CREATED, DOG_WANTED} from "../actions/actions";
 
 const initialState = {
   dogs: [],
@@ -42,6 +42,11 @@ const rootReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         dogs: payload === "All" ? allDogsFilter : createFilter
+      }
+    case DOG_WANTED:
+      return {
+        ...state,
+        dogs: payload
       }
     
     default:

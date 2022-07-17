@@ -7,6 +7,7 @@ export const DOG_POST = 'DOG_POST';
 export const FILTER_DOG = 'FILTER_DOG';
 export const FILTER_CREATED = 'FILTER_CREATED';
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
+export const DOG_WANTED = 'DOG_WANTED';
 
 export const getDogs = () => {
   return async function(dispatch) {
@@ -59,6 +60,21 @@ export const getTemperament = () => {
       return dispatch({
         type: GET_TEMPERAMENT,
         payload: allTemps
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const searchDogs = (raza) => {
+  return async function(dispatch) {
+    try {
+      console.log("action, payload:", raza)
+      let dogsWanted = (await axios(`http://localhost:3001/search?name=${raza}`)).data;
+      return dispatch({
+        type: DOG_WANTED,
+        payload: dogsWanted
       })
     } catch (error) {
       console.log(error)
