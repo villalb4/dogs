@@ -12,8 +12,10 @@ function validar(input) {
   if(!input.name) {
     errors.name = 'debes ponerle un nombre'
   } else if(!/[A-Z]+$/i.test(input.name)) {
-    errors.name = 'solo puede contener letras y sin espacios'
-  } 
+    errors.name = 'solo puede contener letras'
+  } else if(input.name.length >= 25) {
+    errors.name= 'debe contener menos de 25 caracteres'
+  }
   // /^[A-Z]+$/i
 
   //height
@@ -31,6 +33,8 @@ function validar(input) {
     errors.height_min = 'altura min requerida'
   } else if(input.height_min >= input.height_max) {
     errors.height_min = 'debe ser menor al max'
+  } else if(!/[0-9]+$/.test(input.height_min)) {
+    errors.height_min = 'solo puede contener numeros'
   }
 
 
@@ -39,6 +43,8 @@ function validar(input) {
     errors.weight_max = "peso max requerido"
   } else if(input.weight_max > 90) {
     errors.weight_max = 'debe ser menor a 90 KG'
+  } else if(!/[0-9]+$/.test(input.weight_max)) {
+    errors.weight_max = 'solo puede contener numeros'
   }
 
   if(!input.weight_min) {
@@ -49,10 +55,16 @@ function validar(input) {
 
 
   //life_span
-  if(input.life_span_max > 24) {
-    errors.life_span_max = 'debe ser menor a 24 Años'
-  } else if(input.life_span_min >= input.life_span_max) {
+  if(input.life_span_max > 25) {
+    errors.life_span_max = 'debe ser menor a 25 Años'
+  } else if(!/[0-9]+$/.test(input.life_span_max)) {
+    errors.life_span_max = 'solo puede contener numeros'
+  }
+  
+  if(input.life_span_min >= input.life_span_max) {
     errors.life_span_min = 'debe ser menor al max'
+  } else if(!/[0-9]+$/.test(input.life_span_min)) {
+    errors.life_span_min = 'solo puede contener numeros'
   }
 
   return errors;
