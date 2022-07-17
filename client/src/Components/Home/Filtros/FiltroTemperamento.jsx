@@ -12,11 +12,6 @@ function FiltroTemperamento() {
 
   const temp = useSelector(state => state.temperaments)
 
-  
-
-
-  // console.log("ACAAAA :",temp)
-
   function handleFilter(e){
     const value = e.target.value
     dispatch(filterDog(value))
@@ -24,9 +19,7 @@ function FiltroTemperamento() {
 
   return(
     <div>
-      Filtros
       <select onChange={handleFilter}>
-      {/* <select> */}
         <option value="All">All Temperaments</option>
         {temp && temp.map((t, i) => {
           return (
