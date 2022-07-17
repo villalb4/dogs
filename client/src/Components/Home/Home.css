@@ -34,3 +34,6 @@
 .select_ordernamiento:focus {
   outline: none;
 }
+.option_name{
+  color: var(--naranja);
+}

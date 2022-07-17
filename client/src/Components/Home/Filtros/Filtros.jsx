@@ -22,11 +22,11 @@ function Filtros() {
         <div className="div_filtros_relative">  
           <div className="div_filtros">
             <div className="div_fil">
-              <span>Creado en</span>
+              <span className="filtro_name">Creado en</span>
               <FiltroCreado />
             </div>
             <div className="div_fil">
-              <span>Temperamentos</span>
+              <span className="filtro_name">Temperamentos</span>
               <FiltroTemperamento />
             </div>
           </div>

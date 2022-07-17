@@ -17,10 +17,10 @@ function Home() {
           <div className='div_ordernamiento'>
             <span className='ordenar_text'>Ordernar por :</span>
             <select className='select_ordernamiento'>
-              <option value="">nombe (asc)</option>
-              <option value="">nombe (des)</option>
-              <option value="">peso (asc)</option>
-              <option value="">peso (des)</option>
+              <option className='option_name' value="">nombe (asc)</option>
+              <option className='option_name' value="">nombe (des)</option>
+              <option className='option_name' value="">peso (asc)</option>
+              <option className='option_name' value="">peso (des)</option>
             </select>
           </div>
         </div>

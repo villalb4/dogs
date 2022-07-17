@@ -50,3 +50,6 @@
   flex-direction: column;
   gap: 10px;
 }
+.filtro_name {
+  color: var(--gris-oscuro);
+}
