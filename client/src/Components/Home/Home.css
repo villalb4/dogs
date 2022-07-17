@@ -27,13 +27,15 @@
   color: var(--gris-claro);
 }
 .select_ordernamiento {
+  font-size: 15px;
+  color: var(--naranja);
   border: none;
   cursor: pointer;
-  /* width: 100%; */
+  margin-top: 2px;
 }
 .select_ordernamiento:focus {
   outline: none;
 }
 .option_name{
-  color: var(--naranja);
+  color: var(--azul-oscuro);
 }

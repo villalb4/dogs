@@ -20,6 +20,7 @@ function FiltroTemperamento() {
   return(
     <div>
       <select onChange={handleFilter}>
+        <option selected disabled>selecciona uno</option>
         <option value="All">All Temperaments</option>
         {temp && temp.map((t, i) => {
           return (
