@@ -5,6 +5,7 @@
   text-decoration: none;
   background-color: var(--azul-oscuro);
   border-radius: 10px;
+  min-width: 240px;
 }
 .text_button {
   font-family: 'Montserrat';
