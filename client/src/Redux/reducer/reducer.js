@@ -5,6 +5,7 @@ const initialState = {
   allDogsFilter: [],
   details: [],
   temperaments: [],
+  dogsHome: [],
 };
 
 const rootReducer = (state = initialState, {type, payload}) => {
@@ -45,7 +46,6 @@ const rootReducer = (state = initialState, {type, payload}) => {
       }
     case DOG_WANTED:
       console.log(payload)
-      console.log(state.dogsWanted)
       return {
         ...state,
         dogs: payload
