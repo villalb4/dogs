@@ -17,20 +17,20 @@ function FiltroTemperamento() {
 
   // console.log("ACAAAA :",temp)
 
-  // function handleFilter(e){
-  //   const value = e.target.value
-  //   dispatch(filterDog(value))
-  // }
+  function handleFilter(e){
+    const value = e.target.value
+    dispatch(filterDog(value))
+  }
 
   return(
     <div>
       Filtros
-      {/* <select onChange={handleFilter}> */}
-      <select>
+      <select onChange={handleFilter}>
+      {/* <select> */}
         <option value="All">All Temperaments</option>
         {temp && temp.map((t, i) => {
           return (
-            <option value={t.id} key={i}>{t.name}</option>
+            <option value={t.name} key={i}>{t.name}</option>
           )
         })}
       </select>

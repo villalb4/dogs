@@ -2,6 +2,7 @@ import { GET_DOGS , GET_DETAILS , FILTER_DOG, GET_TEMPERAMENT } from "../actions
 
 const initialState = {
   dogs: [],
+  allDogsFilter: [],
   details: [],
   temperaments: []
 };
@@ -11,7 +12,8 @@ const rootReducer = (state = initialState, {type, payload}) => {
     case GET_DOGS:
       return {
         ...state,
-        dogs: payload
+        dogs: payload,
+        allDogsFilter: payload,
       }
     case GET_DETAILS:
       return {
@@ -24,8 +26,9 @@ const rootReducer = (state = initialState, {type, payload}) => {
         ...state
       }
     case FILTER_DOG:
-      const allDogs = state.dogs;
-      const filtro = payload === 'All' ? allDogs : allDogs.filter(e => e.temperaments === payload)
+      const allDogs = state.allDogsFilter;
+      console.log(payload)
+      const filtro = payload === 'All' ? allDogs : allDogs.filter(e => e.temperament.includes(payload))
       return {
         ...state,
         dogs: filtro
