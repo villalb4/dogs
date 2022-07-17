@@ -6,6 +6,7 @@ export const GET_TEMPERAMENT = 'GET_TEMPERAMENT';
 export const DOG_POST = 'DOG_POST';
 export const FILTER_DOG = 'FILTER_DOG';
 export const FILTER_CREATED = 'FILTER_CREATED';
+export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 
 export const getDogs = () => {
   return async function(dispatch) {
@@ -55,7 +56,6 @@ export const getTemperament = () => {
     try {
       let temperaments = (await axios("http://localhost:3001/temperaments")).data;
       let allTemps = temperaments.map(e => e)
-      console.log(allTemps)
       return dispatch({
         type: GET_TEMPERAMENT,
         payload: allTemps
@@ -76,6 +76,13 @@ export const filterDog = (payload) => {
 export const filterCreated = (payload) => {
   return {
     type: FILTER_CREATED,
+    payload
+  }
+}
+
+export const orderByName = (payload) => {
+  return {
+    type: ORDER_BY_NAME,
     payload
   }
 }

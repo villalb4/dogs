@@ -30,7 +30,7 @@
 }
 .div_filtros_relative {
   position: relative;
-  right: 220px;
+  right: 97px;
 }
 .div_filtros {
   position: absolute;
@@ -41,7 +41,7 @@
   border-radius: 10px;
   border: 1px solid var(--gris-placeholder);
   margin-top: 10px;
-  margin-right: 500px;
+  /* margin-right: 500px; */
   /* box-shadow: 0px 4px 16px 0px #0000001A; */
 }
 .div_fil {

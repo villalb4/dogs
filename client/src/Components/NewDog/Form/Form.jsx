@@ -21,7 +21,7 @@ function validar(input) {
     errors.height_max = "altura max requerida"
   } else if(input.height_max > 85) {
     errors.height_max = 'debe ser menor a 85 CM' 
-  } else if(!/^\[0-9]+/.test(input.height_max)) {
+  } else if(!/[0-9]+$/.test(input.height_max)) {
     errors.height_max = 'solo puede contener numeros'
   }
 
