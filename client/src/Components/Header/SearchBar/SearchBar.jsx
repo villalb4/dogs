@@ -16,39 +16,37 @@ function SearchBar() {
   const dogs = useSelector(state => state.dogs);
 
   const [dataResult, setDataResult] = useState([]);
+  const [nameDog, setNameDog] = useState('')
 
   // function handleChange(e){
-  //   const value = e.target.value.toLowerCase();
-  //   if(value) {
-  //     const searchResult = dogs.filter(v => {
-  //       return v.name.toLowerCase().includes(value)
-  //     })
+  //   setNameDog(e.target.value.toLowerCase())
+  //   if(nameDog) {
+  //     const searchResult = dogs.filter(v => {return v.name.toLowerCase().includes(nameDog)})
   //     setDataResult(searchResult)
   //   } else setDataResult([])
   // }
 
-  // function handleSubmit(e){
-  //   e.preventDefault()
-  //   const value = e.target.value.toLowerCase();
-  //   // console.log(value)
-  //   dispatch(searchDogs(value))
-  // }
+  function handleClick(){
+    if(nameDog) {
+      dispatch(searchDogs(nameDog))
+      setNameDog('')
+    }
+  }
 
   function handleChange(e){
-    const value = e.target.value.toLowerCase();
-    if(value) {
-      dispatch(searchDogs(value))
-    }
-
+    setNameDog(e.target.value)
+    // if(nameDog) {
+    //   dispatch(searchDogs(nameDog))
+    // }
   }
 
   return(
     <div className="searchBar_Container">
       <div className="divInput_SearchBar">
-        <img className="searchIcon" src={search_icon} alt="serach" />
-        {/* <form onSubmit={handleSubmit}> */}
-          <input className="searchBar" type="text" placeholder="Buscar" onChange={handleChange}/>
-        {/* </form> */}
+        <button className="button_search" onClick={handleClick}>
+          <img className="searchIcon" src={search_icon} alt="serach" />
+        </button>
+          <input className="searchBar" type="text" placeholder="Buscar" onChange={handleChange} value={nameDog}/>
       </div>
 
       {dataResult.length !== 0 && (<div className="divSearchBar_Results">

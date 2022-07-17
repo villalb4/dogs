@@ -70,7 +70,6 @@ export const getTemperament = () => {
 export const searchDogs = (raza) => {
   return async function(dispatch) {
     try {
-      console.log("action, payload:", raza)
       let dogsWanted = (await axios(`http://localhost:3001/search?name=${raza}`)).data;
       return dispatch({
         type: DOG_WANTED,
