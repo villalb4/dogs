@@ -3,6 +3,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   min-height: 706px;
+  gap: 0 20px;
 }
 .link_all_cards {
   width: 240px;

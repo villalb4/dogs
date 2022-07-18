@@ -14,7 +14,7 @@ function SearchBar() {
   const [nameDog, setNameDog] = useState('')
 
   function handleClick() {
-    if(nameDog && nameDog === Number) {
+    if(nameDog) {
       history.push("/home")
       dispatch(searchDogs(nameDog))
     }

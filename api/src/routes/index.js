@@ -32,17 +32,19 @@ router.get('/search', async(req, res, next) => {
     const validandoDogsDb = await formateoDb(dogDb)
     const validandoDogsApi = await formateoApi(dogApi)
 
-    const allDog = await validandoDogsDb.concat(validandoDogsApi)
+    const allDog = await validandoDogsApi.concat(validandoDogsDb)
 
     if(!name){
       res.send(allDog)
+    } else {
+
+      const dog = await allDog.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))
+        
+      return res
+        .status(200)
+        .send(dog)
     }
 
-    const dog = await allDog.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))
-      
-    return res
-      .status(200)
-      .send(dog)
   } catch (error) {
     next(error)
   }
@@ -59,7 +61,7 @@ router.get('/dogs', async(req, res, next) => {
     const validandoDogsDb = await formateoDb(dogDb)
     const validandoDogsApi = await formateoApi(dogApi)
 
-    const allDog = await validandoDogsDb.concat(validandoDogsApi)
+    const allDog = await validandoDogsApi.concat(validandoDogsDb)
     
     res.json(allDog)
 
