@@ -1,7 +1,8 @@
 const { Router} = require('express');
 const axios = require('axios');
 const {Dog, Temperament} = require("../db.js")
-const {API, API_SEARCH, API_KEY} = process.env
+const {API, API_SEARCH, API_KEY} = process.env;
+const {formateoDb, formateoApi} = require("../controllers/controllers");
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -26,67 +27,11 @@ router.get('/search', async(req, res, next) => {
     const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
     const dogDb = await Dog.findAll({where: {name: name}, include: Temperament})
 
-    const apiFormateo = dogApi.map(dog => {
-      return {
-        id: dog.id,
-        image: dog.image.url,
-        name: dog.name,
-        weight_min: dog.weight.metric.slice(0, 2).trim(),
-        weight_max: dog.weight.metric.slice(-2).trim(),
-        temperament: dog.temperament
-      }
-    })
+    const validandoDogsDb = await formateoDb(dogDb)
+    const validandoDogsApi = await formateoApi(dogApi)
 
-    const validandoDogsApi = await apiFormateo.map(d => {
-      if(!d.weight_min || d.weight_min === "Na") {
-        if(!d.weight_max || d.weight_max === "Na") {
-          d.weight_min = "8"
-        } else {
-          d.weight_min = (d.weight_max - 2).toString();
-        }
-      }
-      
-      if(!d.weight_max || d.weight_max === "Na") {
-        if(!d.weight_min || d.weight_min === "Na") {
-          d.weight_max = "12"
-        } else {
-          d.weight_max = (parseInt(d.weight_min) + 7).toString();
-        }
-      }
+    const allDog = await validandoDogsDb.concat(validandoDogsApi)
 
-      if(!d.temperament) {
-        d.temperament = "Stubborn, Active, Happy, Dutiful, Confident"
-      }
-
-      return d
-    })
-
-    const dbFormateo = dogDb.map(dog => {
-      return {
-        id: dog.id,
-        image: dog.image,
-        name: dog.name,
-        weight_min: dog.weight_min,
-        weight_max: dog.weight_max,
-        temperament: dog.temperaments,
-        creadoEnDB: dog.creadoEnDB
-      }
-    })
-
-    const validandoDogsDb = dbFormateo.map(d => {
-      if(!d.image) {
-        d.image = "https://www.postable.com/blog/wp-content/uploads/2018/06/puppy2.jpg"
-      }
-      if(Array.isArray(d.temperament)) {
-        d.temperament = d.temperament.map(t => t.name)
-        d.temperament = d.temperament.join(", ")
-      }
-      return d
-    })
-
-
-    const allDog = await [...validandoDogsDb, ...validandoDogsApi]
-  
     const dog = await allDog.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))
       
     return res
@@ -103,69 +48,14 @@ router.get('/search', async(req, res, next) => {
 router.get('/dogs', async(req, res, next) => {
   try {
     const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
-    const apiFormateo = dogApi.map(dog => {
-      return {
-        id: dog.id,
-        image: dog.image.url,
-        name: dog.name,
-        weight_min: dog.weight.metric.slice(0, 2).trim(),
-        weight_max: dog.weight.metric.slice(-2).trim(),
-        temperament: dog.temperament
-      }
-    })
-
-    const validandoDogsApi = await apiFormateo.map(d => {
-      if(!d.weight_min || d.weight_min === "Na") {
-        if(!d.weight_max || d.weight_max === "Na") {
-          d.weight_min = "8"
-        } else {
-          d.weight_min = (d.weight_max - 2).toString();
-        }
-      }
-      
-      if(!d.weight_max || d.weight_max === "Na") {
-        if(!d.weight_min || d.weight_min === "Na") {
-          d.weight_max = "12"
-        } else {
-          d.weight_max = (parseInt(d.weight_min) + 7).toString();
-        }
-      }
-
-      if(!d.temperament) {
-        d.temperament = "Stubborn, Active, Happy, Dutiful, Confident"
-      }
-
-      return d
-    })
-    
     const dogDb = await Dog.findAll({include: Temperament});
 
-    const dbFormateo = dogDb.map(dog => {
-      return {
-        id: dog.id,
-        image: dog.image,
-        name: dog.name,
-        weight_min: dog.weight_min,
-        weight_max: dog.weight_max,
-        temperament: dog.temperaments,
-        creadoEnDB: dog.creadoEnDB
-      }
-    })
+    const validandoDogsDb = await formateoDb(dogDb)
+    const validandoDogsApi = await formateoApi(dogApi)
 
-    const validandoDogsDb = dbFormateo.map(d => {
-      if(!d.image) {
-        d.image = "https://www.postable.com/blog/wp-content/uploads/2018/06/puppy2.jpg"
-      }
-      if(Array.isArray(d.temperament)) {
-        d.temperament = d.temperament.map(t => t.name)
-        d.temperament = d.temperament.join(", ")
-      }
-      return d
-    })
-
-    const dogs = [...validandoDogsApi, ...validandoDogsDb];
+    const allDog = await validandoDogsDb.concat(validandoDogsApi)
     
-    res.json(dogs)
+    res.json(allDog)
 
   } catch (error) {
     next(error)
@@ -195,7 +85,6 @@ router.post('/dogs', async(req, res) => {
       .status(201)
       .send({msg: "Perro creado correctamente"})
   } catch (error) {
-    // next(error)
     console.log(error)
   }
 })
@@ -217,11 +106,7 @@ router.get('/temperaments', async(req, res, next)=> {
 
     resultado = resultado.map(t => {return{name: t}})
 
-    // console.log("RESULTADO: ", resultado)
-
     const allTemps = await Temperament.findAll()
-
-    
     
     if(allTemps.length === 0) {
       await Temperament.bulkCreate(resultado)
@@ -247,108 +132,12 @@ router.get('/dogs/:idRaza', async(req, res, next) => {
   }
   try {
     const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
-    //formateando la api para traer solo los datos necesarios para la ruta pricipal
-    const apiFormateo = await dogApi.map(dog => {
-      return {
-        id: dog.id,
-        image: dog.image.url,
-        name: dog.name,
-        weight_min: dog.weight.metric.slice(0, 2).trim(),
-        weight_max: dog.weight.metric.slice(-2).trim(),
-        height_min: dog.height.metric.slice(0, 2).trim(),
-        height_max: dog.height.metric.slice(4).trim(),
-        life_span_min: dog.life_span.slice(0, 2).trim(),
-        life_span_max: dog.life_span.slice(4, -6).trim(),
-        // life_span_max: parseInt(dog.life_span.slice(4).trim()),
-        temperament: dog.temperament
-      }
-    })
-
-    const validandoDogApi = await apiFormateo.map(d => {
-      if(!d.weight_min || d.weight_min === "Na") {
-        if(!d.weight_max || d.weight_max === "Na") {
-          d.weight_min = "8"
-        } else {
-          d.weight_min = (d.weight_max - 2).toString();
-        }
-      }
-      
-      if(!d.weight_max || d.weight_max === "Na") {
-        if(!d.weight_min || d.weight_min === "Na") {
-          d.weight_max = "12"
-        } else {
-          d.weight_max = (parseInt(d.weight_min) + 7).toString();
-        }
-      }
-
-      if(!d.height_min || d.weight_min === "Na") {
-        if(!d.height_max || d.weight_max === "Na") {
-          d.height_min = "7"
-        } else {
-          d.height_min = (d.height_max - 4).toString();
-        }
-      }
-
-      if(!d.height_max || d.weight_max === "Na") {
-        if(!d.height_min || d.weight_min === "Na") {
-          d.height_max = "13"
-        } else {
-          d.height_max = (parseInt(d.height_min) + 6).toString();
-        }
-      }
-
-      if(!d.life_span_max) {
-        if(!d.life_span_min){
-          d.life_span_max = "7"
-        } else {
-          d.life_span_max = (parseInt(d.life_span_min) + 4).toString();
-        }
-      }
-
-      if(!d.life_span_min) {
-        if(!d.life_span_max){
-          d.life_span_min = "7"
-        } else {
-          d.life_span_min = (parseInt(d.life_span_max) + 4).toString();
-        }
-      }
-
-      if(!d.temperament) {
-        d.temperament = "Stubborn, Active, Happy, Dutiful, Confident"
-      }
-
-      return d
-    })
-
     const dogDb = await Dog.findAll({include: Temperament});
 
-    const dbFormateo = await dogDb.map(dog => {
-      return {
-        id: dog.id,
-        image: dog.image,
-        name: dog.name,
-        weight_min: dog.weight_min,
-        weight_max: dog.weight_max,
-        height_min: dog.height_min,
-        height_max: dog.height_max,
-        life_span_min: dog.life_span_min,
-        life_span_max: dog.life_span_max,
-        temperament: dog.temperaments
-      }
-    })
+    const validandoDogsDb = await formateoDb(dogDb)
+    const validandoDogsApi = await formateoApi(dogApi)
 
-    const validandoDogsDb = dbFormateo.map(d => {
-      if(!d.image) {
-        d.image = "https://www.postable.com/blog/wp-content/uploads/2018/06/puppy2.jpg"
-      }
-      if(Array.isArray(d.temperament)) {
-        d.temperament = d.temperament.map(t => t.name)
-        d.temperament = d.temperament.join(", ")
-      }
-      return d
-    })
-
-    const allDog = [...validandoDogApi, ...validandoDogsDb];
+    const allDog = await validandoDogsDb.concat(validandoDogsApi)
 
     const dog = allDog.filter(d => d.id == idRaza)
 
