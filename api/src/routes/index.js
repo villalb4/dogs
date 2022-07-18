@@ -33,7 +33,7 @@ router.get('/search', async(req, res, next) => {
     const validandoDogsApi = await formateoApi(dogApi)
 
     const allDog = await validandoDogsDb.concat(validandoDogsApi)
-    console.log(allDog)
+
     if(!name){
       res.send(allDog)
     }
