@@ -45,6 +45,7 @@ function AllCards() {
     )
   }
 
+  // ------ return component (renderizado) ------
   return(
     <div className='AllCards_component'>
       <div className='AllCards'>
@@ -62,36 +63,3 @@ function AllCards() {
 }
 
 export default AllCards;
-
-
-/* function AllCards() {
-
-  const dispatch = useDispatch();
-  const dogs = useSelector(state => state.dogs);
-
-  useEffect(() => {
-    dispatch(getDogs())
-  }, [dispatch])
-
-  function cards() {
-    return (
-      dogs.map((dog, i) => (
-        <Link to={`/home/${dog.id}`} key={i} className="link_all_cards">
-          <Card 
-            image={dog.image} 
-            name={dog.name} 
-            weight_min={dog.weight_min}
-            weight_max={dog.weight_max}
-            temperament={dog.temperament} 
-          /> 
-        </Link>
-      ))
-    )
-  }
-
-  return(
-    <div className='AllCards'>
-      {dogs.length !== 0 ? cards() : <Loader />}
-    </div>
-  )
-} */

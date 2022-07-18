@@ -3,7 +3,7 @@ import "./Pagination.css";
 
 function Pagination({dogsPerPage, totalPosts, paginate, currentPage, setCurrentPage}) {
 
-  const [pageNumberLimit, setPageNumberLimit] = useState(5);
+  const [pageNumberLimit,/*  setPageNumberLimit */] = useState(5);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
@@ -30,7 +30,7 @@ function Pagination({dogsPerPage, totalPosts, paginate, currentPage, setCurrentP
     if(currentPage !== 1) {
       setCurrentPage(currentPage - 1)
 
-      if((currentPage - 1) % pageNumberLimit == 0) {
+      if((currentPage - 1) % pageNumberLimit === 0) {
         setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
         setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
       }
