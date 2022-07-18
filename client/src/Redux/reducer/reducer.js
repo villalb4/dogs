@@ -15,6 +15,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
         ...state,
         dogs: payload,
         allDogsFilter: payload,
+        dogsHome: payload,
       }
     case GET_DETAILS:
       return {
@@ -48,7 +49,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
       console.log(payload)
       return {
         ...state,
-        dogs: payload
+        dogsHome: payload
       }
     
     default:
