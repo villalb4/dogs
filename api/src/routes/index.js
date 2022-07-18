@@ -3,6 +3,7 @@ const axios = require('axios');
 const {Dog, Temperament} = require("../db.js")
 const {API, API_SEARCH, API_KEY} = process.env;
 const {formateoDb, formateoApi} = require("../controllers/controllers");
+const { Op } = require('sequelize');
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -18,19 +19,24 @@ const router = Router();
 
 router.get('/search', async(req, res, next) => {
   const {name} = req.query;
-  if(!name){
-    return res
-      .status(400)
-      .send({msg: "Falta enviar datos obligatorios"})
-  }
+  // if(!name){
+  //   return res
+  //     .status(400)
+  //     .send()
+  // }
   try {
+
     const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data
-    const dogDb = await Dog.findAll({where: {name: name}, include: Temperament})
+    const dogDb = await Dog.findAll({where: {name: {[Op.iLike]:`${name}%`}}, include: Temperament})
 
     const validandoDogsDb = await formateoDb(dogDb)
     const validandoDogsApi = await formateoApi(dogApi)
 
     const allDog = await validandoDogsDb.concat(validandoDogsApi)
+    console.log(allDog)
+    if(!name){
+      res.send(allDog)
+    }
 
     const dog = await allDog.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))
       

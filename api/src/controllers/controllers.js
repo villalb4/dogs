@@ -8,6 +8,10 @@ module.exports = {
         name: dog.name,
         weight_min: dog.weight_min,
         weight_max: dog.weight_max,
+        height_min: dog.height_min,
+        height_max: dog.height_max,
+        life_span_min: dog.life_span_min,
+        life_span_max: dog.life_span_max,
         temperament: dog.temperaments,
         creadoEnDB: dog.creadoEnDB
       }
@@ -35,6 +39,11 @@ module.exports = {
         name: dog.name,
         weight_min: dog.weight.metric.slice(0, 2).trim(),
         weight_max: dog.weight.metric.slice(-2).trim(),
+        height_min: dog.height.metric.slice(0, 2).trim(),
+        height_max: dog.height.metric.slice(4).trim(),
+        life_span_min: dog.life_span.slice(0, 2).trim(),
+        life_span_max: dog.life_span.slice(4, -6).trim(),
+        // life_span_max: parseInt(dog.life_span.slice(4).trim()),
         temperament: dog.temperament
       }
     })
