@@ -3,8 +3,11 @@ import {useDispatch} from "react-redux";
 import {searchDogs } from "../../../Redux/actions/actions";
 import search_icon from "../../../images/search-icon.svg";
 import './SearchBar.css';
+import { useHistory } from "react-router-dom";
 
 function SearchBar() {
+
+  const history = useHistory();
 
   const dispatch = useDispatch()
 
@@ -12,6 +15,7 @@ function SearchBar() {
 
   function handleClick() {
     if(nameDog) {
+      history.push("/home")
       dispatch(searchDogs(nameDog))
     }
   }
