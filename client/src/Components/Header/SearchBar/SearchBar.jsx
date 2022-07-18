@@ -13,17 +13,9 @@ function SearchBar() {
 
   const dogsHome = useSelector(state => state.dogsHome)
 
-  function handleClick() {
-    if(nameDog) {
-      dispatch(searchDogs(nameDog))
-    }
-  }
-
-  console.log(dogsHome)
-
   function handleChange(e){
     setNameDog(e.target.value)
-    if(nameDog) {
+    if(nameDog && nameDog) {
       dispatch(searchDogs(nameDog))
     }
   }
@@ -32,9 +24,7 @@ function SearchBar() {
     <div className="searchBar_Container">
       <div className="divInput_SearchBar">
         <div className="div_button_search">
-          <button className="button_search" onClick={handleClick}>
-            <img className="searchIcon" src={search_icon} alt="serach" />
-          </button>
+          <img className="searchIcon" src={search_icon} alt="serach" />
         </div>
         <input className="searchBar" type="text" placeholder="Buscar" onChange={handleChange} value={nameDog}/>
       </div>
