@@ -69,13 +69,13 @@ const rootReducer = (state = initialState, {type, payload}) => {
     case ORDER_BY_WEIGHT:
       const orderDogsKg = payload === 'peso_asc' ?
         state.dogs.slice().sort(function(a, b) {
-          if(a.weight_min.toLowerCase() < b.weight_min.toLowerCase()) {return -1}
-          if(b.weight_min.toLowerCase() < a.weight_min.toLowerCase()) {return 1}
+          if(parseInt(a.weight_min) < parseInt(b.weight_min)) {return -1}
+          if(parseInt(b.weight_min) < parseInt(a.weight_min)) {return 1}
           return 0;
         }) : 
         state.dogs.slice().sort(function(a, b) {
-          if(a.weight_min.toLowerCase() > b.weight_min.toLowerCase()) {return -1}
-          if(a.weight_min.toLowerCase() > b.weight_min.toLowerCase()) {return 1}
+          if(parseInt(a.weight_min) > parseInt(b.weight_min)) {return -1}
+          if(parseInt(a.weight_min) > parseInt(b.weight_min)) {return 1}
           return 0;
         })
       return {
