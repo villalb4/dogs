@@ -23,3 +23,18 @@
     background-color: hsl(0, 0%, 78%);
   }
 }
+
+@media screen and (max-width: 574px) {
+  .loader {
+    display: flex;
+    justify-content: space-between;  
+    flex-wrap: wrap;
+    min-height: 706px;
+  }
+}
+
+@media screen and (max-width: 574px) {
+  .loader {
+    justify-content: center;
+  }
+}

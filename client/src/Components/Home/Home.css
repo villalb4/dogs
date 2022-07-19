@@ -55,14 +55,19 @@
 }
 
 @media screen and (max-width: 419px) {
+  .home {
+    max-width: 1110px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
   .div_ordernamiento {
     display: flex;
     flex-direction: column;
- }
- .ordenar_text {
-  font-size: 15px;
- }
- .select_ordernamiento {
-  font-size: 13px;
- }
+  }
+  .ordenar_text {
+    font-size: 15px;
+  }
+    .select_ordernamiento {
+    font-size: 13px;
+  }
 }
