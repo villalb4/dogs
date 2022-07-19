@@ -7,7 +7,8 @@ function Pagination({dogsPerPage, totalPosts, paginate, currentPage, setCurrentP
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
-
+  // console.log(currentPage)
+  // console.log(setCurrentPage)
   
   const pageNumbers = [];
 

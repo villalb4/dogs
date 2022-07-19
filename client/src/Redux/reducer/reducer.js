@@ -1,4 +1,4 @@
-import { GET_DOGS , GET_DETAILS , GET_TEMPERAMENT, DOG_POST ,FILTER_DOG, FILTER_CREATED, DOG_WANTED} from "../actions/actions";
+import { GET_DOGS , GET_DETAILS , GET_TEMPERAMENT, DOG_POST ,FILTER_DOG, FILTER_CREATED, DOG_WANTED, ORDER_BY_NAME} from "../actions/actions";
 
 const initialState = {
   dogs: [],
@@ -46,10 +46,25 @@ const rootReducer = (state = initialState, {type, payload}) => {
         dogs: payload === "All" ? allDogsFilter : createFilter
       }
     case DOG_WANTED:
-      console.log(payload)
       return {
         ...state,
         dogsHome: payload
+      }
+    case ORDER_BY_NAME:
+      const sortedArr = payload === 'asc' ?
+        state.dogs.slice().sort(function(a, b) {
+          if(a.name.toLowerCase() < b.name.toLowerCase()) {return -1}
+          if(b.name.toLowerCase() < a.name.toLowerCase()) {return 1}
+          return 0;
+        }) : 
+        state.dogs.slice().sort(function(a, b) {
+          if(a.name.toLowerCase() > b.name.toLowerCase()) {return -1}
+          if(a.name.toLowerCase() > b.name.toLowerCase()) {return 1}
+          return 0;
+        }) 
+      return {
+        ...state,
+        dogs: sortedArr
       }
     
     default:

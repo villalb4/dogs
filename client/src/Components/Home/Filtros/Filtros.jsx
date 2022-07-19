@@ -4,7 +4,7 @@ import FiltroCreado from "./FiltroCreado";
 import './Filtros.css';
 import icon from '../../../images/icon_filtro.svg';
 
-function Filtros() {
+function Filtros({currentPage, setCurrentPage}) {
 
   const [open, setOpen] = useState(false)
 
@@ -23,11 +23,11 @@ function Filtros() {
           <div className="div_filtros">
             <div className="div_fil">
               <span className="filtro_name">Creado en</span>
-              <FiltroCreado />
+              <FiltroCreado currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </div>
             <div className="div_fil">
               <span className="filtro_name">Temperamentos</span>
-              <FiltroTemperamento />
+              <FiltroTemperamento currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </div>
           </div>
         </div>

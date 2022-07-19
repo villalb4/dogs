@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {getDogs} from '../../../Redux/actions/actions';
 import Card from "./Card/Card";
@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader';
 import Pagination from '../Pagination/Pagination';
 import './AllCards.css';
 
-function AllCards() {
+function AllCards({currentPage, setCurrentPage, dogsPerPage, indexOfFirstDog, indexOfLastDog}) {
 
   const dispatch = useDispatch();
   const dogs = useSelector(state => state.dogs);
@@ -16,13 +16,15 @@ function AllCards() {
     dispatch(getDogs())
   }, [dispatch])
 
+  // console.log(currentPage)
+  // console.log(setCurrentPage)
 
   // ------ PAGINADO ------
-  const [currentPage, setCurrentPage] = useState(1);
-  const [dogsPerPage] = useState(8);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [dogsPerPage] = useState(8);
 
-  const indexOfLastDog = currentPage * dogsPerPage;
-  const indexOfFirstDog = indexOfLastDog - dogsPerPage;
+  // const indexOfLastDog = currentPage * dogsPerPage;
+  // const indexOfFirstDog = indexOfLastDog - dogsPerPage;
   const CurrentDog = dogs.slice(indexOfFirstDog, indexOfLastDog)
   const paginate =(page) => {
     setCurrentPage(page)

@@ -2,11 +2,12 @@ import React from "react";
 import { filterCreated } from "../../../Redux/actions/actions";
 import {useDispatch} from'react-redux';
 
-function FiltroCreado() {
+function FiltroCreado({currentPage, setCurrentPage}) {
   const dispatch = useDispatch();
 
   function handleSelect(e){
     const value = e.target.value;
+    setCurrentPage(1)
     dispatch(filterCreated(value))
   }
 

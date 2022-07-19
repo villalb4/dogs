@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {filterDog, getTemperament} from '../../../Redux/actions/actions';
 import {useDispatch, useSelector} from 'react-redux';
 
-function FiltroTemperamento() {
+function FiltroTemperamento({currentPage, setCurrentPage}) {
 
   const dispatch = useDispatch()
 
@@ -14,6 +14,7 @@ function FiltroTemperamento() {
 
   function handleFilter(e){
     const value = e.target.value
+    setCurrentPage(1)
     dispatch(filterDog(value))
   }
 

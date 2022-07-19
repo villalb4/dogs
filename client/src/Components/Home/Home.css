@@ -43,6 +43,6 @@
 
 @media screen and (max-width: 574px) {
  body {
-  background-color: red;
+  /* background-color: red; */
  }
 }
