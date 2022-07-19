@@ -33,3 +33,28 @@
   text-decoration: none;
   color: var(--gris-claro);
 }
+.menu {
+  display: none;
+}
+@media screen and (max-width: 574px) {
+  .header_cont {
+    flex-direction: column;
+  }
+  .nav {
+    max-width: 500;
+    width: 100%;
+  }
+  .about {
+    display: none;
+  }
+  .div_responsive_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 90px;
+  }
+  .menu {
+    display: block;
+  }
+ }

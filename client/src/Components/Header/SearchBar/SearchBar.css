@@ -5,7 +5,7 @@
   align-items: center;
   background-color: var(--gris-search-bar);
   border-radius: 10px;
-  width: 240px;
+  max-width: 240px;
   max-height: 50px;
   padding: 8px;
   overflow: hidden;
@@ -51,7 +51,8 @@
   padding: 15px;
   border-radius: 10px;
   border: 1px solid rgba(213, 213, 213, 0.701);
-  width: 240px;
+  max-width: 240px;
+  width: 100%;
   max-height: 400px;
   background-color: var(--blanco);
   overflow: hidden;
@@ -77,3 +78,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
 } */
+
+@media screen and (max-width: 574px) {
+  .searchBar_Container {
+    max-width: 514px;
+    width: 100%;
+  }
+  .divInput_SearchBar {
+    max-width: 514px;
+  }
+}
