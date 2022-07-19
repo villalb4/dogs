@@ -65,6 +65,22 @@ module.exports = {
         }
       }
 
+      if(!d.height_max) {
+        if(!d.height_min) {
+          d.height_max = "42"
+        } else {
+          d.height_max = (parseInt(d.height_min) + 3).toString();
+        }
+      }
+
+      if(!d.life_span_max) {
+        if(!d.life_span_min) {
+          d.life_span_max = "19"
+        } else {
+          d.life_span_max = (parseInt(d.life_span_min) + 2).toString();
+        }
+      }
+
       if(!d.temperament) {
         d.temperament = "Stubborn, Active, Happy, Dutiful, Confident"
       }
