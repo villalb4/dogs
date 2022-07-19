@@ -49,16 +49,16 @@ module.exports = {
     })
 
     const validandoDogsApi = await apiFormateo.map(d => {
-      if(!d.weight_min || d.weight_min === "Na") {
-        if(!d.weight_max || d.weight_max === "Na") {
+      if(!d.weight_min || d.weight_min === "Na" || d.weight_min === "NaN" || d.weight_min === "aN") {
+        if(!d.weight_max || d.weight_max === "Na" || d.weight_max === "NaN" || d.weight_max === "aN") {
           d.weight_min = "8"
         } else {
           d.weight_min = (d.weight_max - 2).toString();
         }
       }
       
-      if(!d.weight_max || d.weight_max === "Na") {
-        if(!d.weight_min || d.weight_min === "Na") {
+      if(!d.weight_max || d.weight_max === "Na" || d.weight_max === "NaN" || d.weight_max === "aN") {
+        if(!d.weight_min || d.weight_min === "Na" || d.weight_min === "NaN" || d.weight_min === "aN") {
           d.weight_max = "12"
         } else {
           d.weight_max = (parseInt(d.weight_min) + 7).toString();
