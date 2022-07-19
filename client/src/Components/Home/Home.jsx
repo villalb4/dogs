@@ -39,11 +39,10 @@ function Home() {
           <div className='div_ordernamiento'>
             <span className='ordenar_text'>Ordernar por :</span>
             <select className='select_ordernamiento' onChange={handleChange}>
-              <option className='option_name' select="true" hidden>name</option>
-              <option className='option_name' value="name_asc">nombe (asc)</option>
-              <option className='option_name' value="name_des">nombe (des)</option>
-              <option className='option_name' value="peso_asc">peso (asc)</option>
-              <option className='option_name' value="peso_des">peso (des)</option>
+              <option className='option_name' value="name_asc">Nombre (asc)</option>
+              <option className='option_name' value="name_des">Nombre (des)</option>
+              <option className='option_name' value="peso_asc">Peso (asc)</option>
+              <option className='option_name' value="peso_des">Peso (des)</option>
             </select>
           </div>
         </div>
