@@ -14,3 +14,14 @@ footer {
 .heart_footer {
   width: 12px;
 }
+
+@media screen and (max-width: 300px) {
+  .text_footer {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--gris-placeholder);
+  }
+  .heart_footer {
+    width: 8px;
+  }
+}

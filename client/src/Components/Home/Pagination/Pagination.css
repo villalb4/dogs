@@ -36,3 +36,26 @@
   background-color: var(--naranja);
   color: var(--blanco);
 }
+
+@media screen and (max-width: 574px) {
+  .pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 5px;
+  }
+  .page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--azul-oscuro);
+    height: 28px;
+    width: 28px;
+    background-color: var(--paginado);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
