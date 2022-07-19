@@ -18,3 +18,22 @@
 .link_all_cards:hover {
   box-shadow: 0px 4px 22px 0px #0000003d;
 }
+
+@media screen and (max-width: 574px) {
+  .AllCards {
+    display: flex;
+    justify-content: space-between;
+    
+    flex-wrap: wrap;
+    min-height: 706px;
+  }
+}
+
+@media screen and (max-width: 574px) {
+  .AllCards {
+    justify-content: center;
+  }
+  .link_all_cards {
+    margin-bottom: 40px;
+  }
+}

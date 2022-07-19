@@ -21,3 +21,11 @@
 .dog_button_create {
   max-width: 133px;
 }
+
+@media screen and (max-width: 574px) {
+  .button_crear_perro {
+    max-width: 514px;
+    justify-content: space-between;
+    margin-bottom: 45px;
+  }
+}

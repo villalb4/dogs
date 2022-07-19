@@ -37,8 +37,12 @@
   display: none;
 }
 @media screen and (max-width: 574px) {
+  .header {
+    margin-bottom: 40px;
+  }
   .header_cont {
     flex-direction: column;
+    padding-bottom: 0;
   }
   .nav {
     max-width: 500;

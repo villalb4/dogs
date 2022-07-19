@@ -42,7 +42,27 @@
 }
 
 @media screen and (max-width: 574px) {
- body {
-  /* background-color: red; */
+ .home_options {
+  flex-direction: column;
+ }
+ .div_filtro_ordernamineto {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 514px;
+}
+}
+
+@media screen and (max-width: 419px) {
+  .div_ordernamiento {
+    display: flex;
+    flex-direction: column;
+ }
+ .ordenar_text {
+  font-size: 15px;
+ }
+ .select_ordernamiento {
+  font-size: 13px;
  }
 }
