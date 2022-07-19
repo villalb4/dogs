@@ -73,13 +73,14 @@ function validar(input) {
 
 function Form() {
 
+  const dispatch = useDispatch()
+
   useEffect(()=> {
     dispatch(getTemperament())
-  }, [])
+  }, [dispatch])
 
   const temperamentos = useSelector(state => state.temperaments)
 
-  const dispatch = useDispatch()
 
   const [errors, setErrors] = useState({});
 
