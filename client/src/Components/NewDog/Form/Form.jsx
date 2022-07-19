@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import {dogPost} from '../../../Redux/actions/actions';
 import { getTemperament } from '../../../Redux/actions/actions';
-import { useHistory } from "react-router-dom";
 import './Form.css';
 
 
@@ -24,7 +23,7 @@ function validar(input) {
     errors.height_max = "altura max requerida"
   } else if(parseInt(input.height_max) > 85) {
     errors.height_max = 'debe ser menor a 85 CM' 
-  } else if(!/[0-9]+$/.test(input.height_max)) {
+  } else if(!/^[0-9]+$/.test(input.height_max)) {
     errors.height_max = 'solo puede contener numeros'
   }
 
@@ -34,7 +33,7 @@ function validar(input) {
     errors.height_min = 'altura min requerida'
   } else if(parseInt(input.height_min) >= parseInt(input.height_max)) {
     errors.height_min = 'debe ser menor al max'
-  } else if(!/[0-9]+$/.test(input.height_min)) {
+  } else if(!/^[0-9]+$/.test(input.height_min)) {
     errors.height_min = 'solo puede contener numeros'
   }
 
@@ -44,7 +43,7 @@ function validar(input) {
     errors.weight_max = "peso max requerido"
   } else if(parseInt(input.weight_max) > 90) {
     errors.weight_max = 'debe ser menor a 90 KG'
-  } else if(!/[0-9]+$/.test(input.weight_max)) {
+  } else if(!/^[0-9]+$/.test(input.weight_max)) {
     errors.weight_max = 'solo puede contener numeros'
   }
 
@@ -58,13 +57,13 @@ function validar(input) {
   //life_span
   if(parseInt(input.life_span_max) > 20) {
     errors.life_span_max = 'debe ser menor a 20 Años'
-  } else if(!/[0-9]+$/.test(input.life_span_max)) {
+  } else if(!/^[0-9]+$/.test(input.life_span_max)) {
     errors.life_span_max = 'solo puede contener numeros'
   }
   
   if(parseInt(input.life_span_min) >= parseInt(input.life_span_max)) {
     errors.life_span_min = 'debe ser menor al max'
-  } else if(!/[0-9]+$/.test(input.life_span_min)) {
+  } else if(!/^[0-9]+$/.test(input.life_span_min)) {
     errors.life_span_min = 'solo puede contener numeros'
   }
 
