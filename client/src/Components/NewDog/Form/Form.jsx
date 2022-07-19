@@ -14,7 +14,7 @@ function validar(input) {
     errors.name = 'debes ponerle un nombre'
   } else if(!/[A-Z]+$/i.test(input.name)) {
     errors.name = 'solo puede contener letras'
-  } else if(input.name.length >= 25) {
+  } else if(parseInt(input.name.length) >= 25) {
     errors.name= 'debe contener menos de 25 caracteres'
   }
   // /^[A-Z]+$/i
@@ -22,7 +22,7 @@ function validar(input) {
   //height
   if(!input.height_max) {
     errors.height_max = "altura max requerida"
-  } else if(input.height_max > 85) {
+  } else if(parseInt(input.height_max) > 85) {
     errors.height_max = 'debe ser menor a 85 CM' 
   } else if(!/[0-9]+$/.test(input.height_max)) {
     errors.height_max = 'solo puede contener numeros'
@@ -32,7 +32,7 @@ function validar(input) {
 
   if(!input.height_min) {
     errors.height_min = 'altura min requerida'
-  } else if(input.height_min >= input.height_max) {
+  } else if(parseInt(input.height_min) >= parseInt(input.height_max)) {
     errors.height_min = 'debe ser menor al max'
   } else if(!/[0-9]+$/.test(input.height_min)) {
     errors.height_min = 'solo puede contener numeros'
@@ -42,7 +42,7 @@ function validar(input) {
   //weight  
   if(!input.weight_max) {
     errors.weight_max = "peso max requerido"
-  } else if(input.weight_max > 90) {
+  } else if(parseInt(input.weight_max) > 90) {
     errors.weight_max = 'debe ser menor a 90 KG'
   } else if(!/[0-9]+$/.test(input.weight_max)) {
     errors.weight_max = 'solo puede contener numeros'
@@ -50,19 +50,19 @@ function validar(input) {
 
   if(!input.weight_min) {
     errors.weight_min = 'peso min requerido'
-  } else if(input.weight_min >= input.weight_max) {
+  } else if(parseInt(input.weight_min) >= parseInt(input.weight_max)) {
     errors.weight_min= 'debe ser menor al max'
   }
 
 
   //life_span
-  if(input.life_span_max > 20) {
+  if(parseInt(input.life_span_max) > 20) {
     errors.life_span_max = 'debe ser menor a 20 Años'
   } else if(!/[0-9]+$/.test(input.life_span_max)) {
     errors.life_span_max = 'solo puede contener numeros'
   }
   
-  if(input.life_span_min >= input.life_span_max) {
+  if(parseInt(input.life_span_min) >= parseInt(input.life_span_max)) {
     errors.life_span_min = 'debe ser menor al max'
   } else if(!/[0-9]+$/.test(input.life_span_min)) {
     errors.life_span_min = 'solo puede contener numeros'
