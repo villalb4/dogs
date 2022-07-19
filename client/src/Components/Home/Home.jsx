@@ -5,7 +5,7 @@ import ButtonCreateDog from './ButtonCreateDog/ButtonCreateDog';
 import Filtros from './Filtros/Filtros'
 import Footer from '../Footer/Footer';
 import { useDispatch } from 'react-redux';
-import { orderByName } from '../../Redux/actions/actions';
+import { orderByName, orderByWeight } from '../../Redux/actions/actions';
 import './Home.css';
 
 function Home() {
@@ -14,7 +14,12 @@ function Home() {
 
   function handleChange(e){
     const value = e.target.value;
-    dispatch(orderByName(value))
+    if(value === "name_asc" || value === "name_des") {
+      dispatch(orderByName(value))
+    } 
+    if(value === "peso_asc" || value === "peso_des") {
+      dispatch(orderByWeight(value))
+    }
   }
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,10 +40,10 @@ function Home() {
             <span className='ordenar_text'>Ordernar por :</span>
             <select className='select_ordernamiento' onChange={handleChange}>
               <option className='option_name' select="true" hidden>name</option>
-              <option className='option_name' value="asc">nombe (asc)</option>
-              <option className='option_name' value="des">nombe (des)</option>
-              {/* <option className='option_name' value="PESO_ASC">peso (asc)</option>
-              <option className='option_name' value="PESO_DES">peso (des)</option> */}
+              <option className='option_name' value="name_asc">nombe (asc)</option>
+              <option className='option_name' value="name_des">nombe (des)</option>
+              <option className='option_name' value="peso_asc">peso (asc)</option>
+              <option className='option_name' value="peso_des">peso (des)</option>
             </select>
           </div>
         </div>

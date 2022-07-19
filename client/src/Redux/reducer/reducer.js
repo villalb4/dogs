@@ -1,4 +1,4 @@
-import { GET_DOGS , GET_DETAILS , GET_TEMPERAMENT, DOG_POST ,FILTER_DOG, FILTER_CREATED, DOG_WANTED, ORDER_BY_NAME} from "../actions/actions";
+import { GET_DOGS , GET_DETAILS , GET_TEMPERAMENT, DOG_POST ,FILTER_DOG, FILTER_CREATED, DOG_WANTED, ORDER_BY_NAME, ORDER_BY_WEIGHT} from "../actions/actions";
 
 const initialState = {
   dogs: [],
@@ -51,7 +51,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
         dogsHome: payload
       }
     case ORDER_BY_NAME:
-      const sortedArr = payload === 'asc' ?
+      const orderDogsName = payload === 'name_asc' ?
         state.dogs.slice().sort(function(a, b) {
           if(a.name.toLowerCase() < b.name.toLowerCase()) {return -1}
           if(b.name.toLowerCase() < a.name.toLowerCase()) {return 1}
@@ -61,10 +61,26 @@ const rootReducer = (state = initialState, {type, payload}) => {
           if(a.name.toLowerCase() > b.name.toLowerCase()) {return -1}
           if(a.name.toLowerCase() > b.name.toLowerCase()) {return 1}
           return 0;
-        }) 
+        })
       return {
         ...state,
-        dogs: sortedArr
+        dogs: orderDogsName
+      }
+    case ORDER_BY_WEIGHT:
+      const orderDogsKg = payload === 'peso_asc' ?
+        state.dogs.slice().sort(function(a, b) {
+          if(a.weight_min < b.weight_min) {return -1}
+          if(b.weight_min < a.weight_min) {return 1}
+          return 0;
+        }) : 
+        state.dogs.slice().sort(function(a, b) {
+          if(a.weight_min > b.weight_min) {return -1}
+          if(a.weight_min > b.weight_min) {return 1}
+          return 0;
+        })
+      return {
+        ...state,
+        dogs: orderDogsKg
       }
     
     default:

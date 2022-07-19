@@ -104,7 +104,7 @@ export const orderByName = (payload) => {
   }
 }
 
-export const orderByweight = (payload) => {
+export const orderByWeight = (payload) => {
   console.log(payload)
   return {
     type: ORDER_BY_WEIGHT,
