@@ -67,12 +67,6 @@ function validar(input) {
     errors.life_span_min = 'solo puede contener numeros'
   }
 
-  //!/[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)?/gi
-
-  if(input.length > 3) {
-    errors.temperamentos = 'no se pueden agregar mas de 4'
-  } 
-
   return errors;
 }
 
@@ -119,21 +113,15 @@ function Form() {
 
     if(input.temperament.includes(e.target.value)) return
 
-    let validateErrors = validar([...selectNameState, e.target.value])
+    setInput({
+      ...input,
+      temperament: [...input.temperament, e.target.value]
+    })
 
-    setErrors(validateErrors)
-
-    if(!errors.temperamentos) {
-      setInput({
-        ...input,
-        temperament: [...input.temperament, e.target.value]
-      })
-
-      const selectName = e.target.value;
-      if(selectName === "default") return;
-      setInput({...input , temperament:[...input.temperament, selectName]})
-      setSelectNameState([...selectNameState, temperamentos.find(e => e.id === parseInt(selectName))])
-    }
+    const selectName = e.target.value;
+    if(selectName === "default") return;
+    setInput({...input , temperament:[...input.temperament, selectName]})
+    setSelectNameState([...selectNameState, temperamentos.find(e => e.id === parseInt(selectName))])
   }
 
   function handleSubmit(e){
@@ -159,28 +147,13 @@ function Form() {
     } 
   }
 
-  function handleDelete(e) {
-
-
-    const tempId = temperamentos?.filter(t => {
-      if(t.name === e.target.value) return t.id
-    })
-
-    const borrarGlobal = input.temperament.filter(t => parseInt(t) !== tempId[0].id);
-    const borrarLocal = selectNameState.filter(t => t.name !== e.target.value);
-
-    setInput({...input, temperament: borrarGlobal})
-    setSelectNameState(borrarLocal)
-    console.log("hola")
-  }
-
 
   return(
     <div className='Form_container'>
       <h2 className='form_title'>AGREGA LOS DATOS DE TU <span className='form_title_naranja'>PERRO</span></h2>
       <p className='datos_obligatorios'>Datos con * obligatorios</p>
 
-      <form className='form' onSubmit={handleSubmit}>
+      <form className='form' action="" onSubmit={handleSubmit}>
         {/* ---- INPUT NAME ---- */}
         <div>
           <div>
@@ -191,7 +164,7 @@ function Form() {
             {errors.name && (<span className='dato_incorrecto'>{errors.name}</span>)}
           </div>
         </div>
- 
+
         {/* ---- INPUT IMAGE ---- */}
         <div>
           <label>Imagen</label>
@@ -275,17 +248,13 @@ function Form() {
               })}
             </select>
           </div>
-          {errors.temperamentos && (<span className='dato_incorrecto'>{errors.temperamentos}</span>)}
-          <div className='ul_temp'>
-            {selectNameState?.map((e, i) => {
+          <ul className='ul_temp'>
+            {selectNameState.map((e, i) => {
               return(
-              <span  className='li_temp' key={i}>
-                {e.name}
-                <button className='button_delete_form' type='button' value={e.name} onClick={handleDelete}>x</button>
-              </span>
+              <li className='li_temp' key={i}>{e.name}</li>
               )
             })}
-          </div>
+          </ul>
         </div>
 
         <input className={errors.name || errors.height_min || errors.height_max || errors.weight_min || errors.weight_max ? "submit none" : "submit"} type="submit" value="crear"/>

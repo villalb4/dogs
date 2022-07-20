@@ -29,7 +29,6 @@ function Header() {
 
         <div className="nav">
           <a href="https://github.com/villalb4/Dogs" target="_balck" className="about">GitHub</a>
-          {/* <NavLink to="#" className="about">GitHub</NavLink> */}
           <SearchBar />
         </div>
       </div>
