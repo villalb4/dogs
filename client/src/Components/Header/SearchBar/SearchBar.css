@@ -57,6 +57,7 @@
   background-color: var(--blanco);
   overflow: hidden;
   margin-top: 10px;
+  z-index: 3;
 }
 .divSearchBar_Results.active {
   opacity: 1;

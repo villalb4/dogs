@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import DogDetail from './DogDetail/DogDetail';
 import {getDetail} from '../../Redux/actions/actions';
 import Footer from '../Footer/Footer';
+import './Details.css';
 
 function Details(props) {
 
@@ -16,7 +17,7 @@ function Details(props) {
   },[dispatch, id])
 
   return(
-    <div>
+    <div className='details_component'>
       <Header />
       <DogDetail dog={dog[0]}/>
       <Footer />
