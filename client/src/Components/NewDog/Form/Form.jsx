@@ -248,13 +248,15 @@ function Form() {
               })}
             </select>
           </div>
-          <ul className='ul_temp'>
-            {selectNameState.map((e, i) => {
-              return(
-              <li className='li_temp' key={i}>{e.name}</li>
-              )
-            })}
-          </ul>
+          <div className='div_form_final_temps'>
+            <ul className='ul_temp'>
+              {selectNameState.map((e, i) => {
+                return(
+                <li className='li_temp' key={i}>{e.name}</li>
+                )
+              })}
+            </ul>
+          </div>
         </div>
 
         <input className={errors.name || errors.height_min || errors.height_max || errors.weight_min || errors.weight_max ? "submit none" : "submit"} type="submit" value="crear"/>
