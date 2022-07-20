@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {searchDogs } from "../../../Redux/actions/actions";
 import search_icon from "../../../images/search-icon.svg";
 import './SearchBar.css';
-import {/*  useHistory, */ Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 
 function SearchBar() {
 
@@ -20,6 +20,10 @@ function SearchBar() {
     }
   }
 
+  function handleClick() {
+    setNameDog('')
+  }
+
   return(
     <div className="searchBar_Container">
       <div className="divInput_SearchBar">
@@ -27,6 +31,7 @@ function SearchBar() {
           <img className="searchIcon" src={search_icon} alt="serach" />
         </div>
         <input className="searchBar" type="text" placeholder="Buscar" onChange={handleChange} value={nameDog}/>
+        <button className={nameDog.length > 0 ? "cleaner active" : "cleaner"} onClick={handleClick} >x</button>
       </div>
 
       <div className={nameDog.length !== 0 ? "divSearchBar_Results active" : "divSearchBar_Results"}>
