@@ -69,6 +69,10 @@ function validar(input) {
 
   //!/[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)?/gi
 
+  if(input.length > 3) {
+    errors.temperamentos = 'no se pueden agregar mas de 4'
+  } 
+
   return errors;
 }
 
@@ -115,15 +119,21 @@ function Form() {
 
     if(input.temperament.includes(e.target.value)) return
 
-    setInput({
-      ...input,
-      temperament: [...input.temperament, e.target.value]
-    })
+    let validateErrors = validar([...selectNameState, e.target.value])
 
-    const selectName = e.target.value;
-    if(selectName === "default") return;
-    setInput({...input , temperament:[...input.temperament, selectName]})
-    setSelectNameState([...selectNameState, temperamentos.find(e => e.id === parseInt(selectName))])
+    setErrors(validateErrors)
+
+    if(!errors.temperamentos) {
+      setInput({
+        ...input,
+        temperament: [...input.temperament, e.target.value]
+      })
+
+      const selectName = e.target.value;
+      if(selectName === "default") return;
+      setInput({...input , temperament:[...input.temperament, selectName]})
+      setSelectNameState([...selectNameState, temperamentos.find(e => e.id === parseInt(selectName))])
+    }
   }
 
   function handleSubmit(e){
@@ -151,10 +161,10 @@ function Form() {
 
   function handleDelete(e) {
 
+
     const tempId = temperamentos?.filter(t => {
       if(t.name === e.target.value) return t.id
     })
-    console.log(" TempId :", tempId)
 
     const borrarGlobal = input.temperament.filter(t => parseInt(t) !== tempId[0].id);
     const borrarLocal = selectNameState.filter(t => t.name !== e.target.value);
@@ -181,10 +191,7 @@ function Form() {
             {errors.name && (<span className='dato_incorrecto'>{errors.name}</span>)}
           </div>
         </div>
-        {/* {console.log("global :",borrarGlobal)}
-        {console.log("local :",borrarLocal)} */}
-        {console.log("Select :",selectNameState)} 
-        {console.log("inputTemp :",input.temperament)} 
+ 
         {/* ---- INPUT IMAGE ---- */}
         <div>
           <label>Imagen</label>
@@ -268,6 +275,7 @@ function Form() {
               })}
             </select>
           </div>
+          {errors.temperamentos && (<span className='dato_incorrecto'>{errors.temperamentos}</span>)}
           <div className='ul_temp'>
             {selectNameState?.map((e, i) => {
               return(
