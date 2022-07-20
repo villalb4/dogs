@@ -54,6 +54,24 @@
   color: var(--gris-oscuro);
 }
 
+@media screen and (max-width: 574px) {
+  .div_filtros_relative {
+    position: relative;
+    right: 0px;
+  }
+  .div_filtros {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--blanco);
+    gap: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--gris-placeholder);
+    margin-top: 10px;
+  }
+}
+
 @media screen and (max-width: 375px) {
   .button_filter {
     gap: 5px;
@@ -71,16 +89,5 @@
   .div_filtros_relative {
     position: relative;
     left: 0px;
-  }
-  .div_filtros {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--blanco);
-    gap: 50px;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid var(--gris-placeholder);
-    margin-top: 10px;
   }
 }
