@@ -33,8 +33,38 @@
   text-decoration: none;
   color: var(--gris-claro);
 }
+.button_header_menu {
+  border: none;
+  background-color: var(--blanco);
+  cursor: pointer;
+}
+.button_header_menu:focus {
+  outline: none;
+}
 .menu {
   display: none;
+}
+.menu_hiden {
+  position: absolute;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  height: 0vh;
+  width: 100vw;
+  top: 115px;
+  background-color: var(--azul-oscuro);
+  transition: all 0.5 ease;
+}
+.menu_hiden.active {
+  height: 50vh;
+  opacity: 1;
+}
+.about_responsive {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--naranja);
 }
 @media screen and (max-width: 574px) {
   .header {
