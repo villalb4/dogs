@@ -27,7 +27,7 @@
 @media screen and (max-width: 574px) {
   .loader {
     display: flex;
-    justify-content: space-between;  
+    justify-content: center;  
     flex-wrap: wrap;
     min-height: 706px;
   }
@@ -36,5 +36,11 @@
 @media screen and (max-width: 574px) {
   .loader {
     justify-content: center;
+    gap: 10px;
+  }
+  .card_loading {
+    width: 160px;
+    height: 240px;
+    margin-bottom: 10px;
   }
 }

@@ -153,7 +153,7 @@ th, td {
 @media screen and (max-width: 455px) {
   .profile {
     gap: 20px;
-    width: 305px;
+    width: 277px;
   }
   .div_dog_profile {
     width: 120px; 
@@ -167,32 +167,34 @@ th, td {
     gap: 5px;
   }
   .name_dog {
-    font-size: 20px;
+    font-size: 18px;
   }
   .sobre_dog {
-    font-size: 14px;
+    font-size: 13px;
   }
   .table_container {
     margin: 20px 0 0;
   }
   table {
-    max-width: 305px;
+    max-width: 277px;
   }
   .encabezado_tabla {
     padding: 10px ;
+    font-size: 13px;
   }
   .table_caracteristicas {
-    font-size: 14px;
+    font-size: 12px;
     padding: 10px;
   }
   .table_temp {
     padding-bottom: 200px;
   }
   .table_datos {
-    font-size: 13px;
+    font-size: 12px;
+    padding: 8px;
   }
   .div_banner {
-    max-width: 305px;
+    max-width: 277px;
     height: 407px;
   }
   .banner {

@@ -98,6 +98,8 @@ function Form() {
 
   const [selectNameState, setSelectNameState] = useState([])
   
+  // console.log("input form :",input.temperament)
+
   function handleChange(e){
     setInput({
       ...input,
@@ -145,6 +147,12 @@ function Form() {
         console.log(error)
       }
     } 
+  }
+
+
+  function handleDelete(e){
+    setInput({...input, temperament : input.temperament.filter(t => t !== e.target.value)})
+    setSelectNameState(selectNameState.filter(t => t.id !== parseInt(e.target.value)))
   }
 
 
@@ -252,7 +260,10 @@ function Form() {
             <ul className='ul_temp'>
               {selectNameState.map((e, i) => {
                 return(
-                <li className='li_temp' key={i}>{e.name}</li>
+                <li className='li_temp' key={i}>
+                  {e.name}
+                  <button className='delete_temp' type='button' value={e.id} onClick={handleDelete}>x</button>
+                </li>
                 )
               })}
             </ul>

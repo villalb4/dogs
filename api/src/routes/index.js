@@ -19,11 +19,6 @@ const router = Router();
 
 router.get('/search', async(req, res, next) => {
   const {name} = req.query;
-  // if(!name){
-  //   return res
-  //     .status(400)
-  //     .send()
-  // }
   try {
 
     const dogApi = (await axios.get(`${API}?api_key=${API_KEY}`)).data

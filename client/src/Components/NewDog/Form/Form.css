@@ -102,6 +102,13 @@ label {
   font-weight: 500;
   color: var(--naranja);
 }
+.li_temp {
+  display: flex;
+  gap: 5px;
+  border: 1px solid var(--naranja);
+  padding: 4px;
+  border-radius: 4px;
+}
 
 .select_form {
   background-color: var(--gris-search-bar);
@@ -150,7 +157,72 @@ label {
 .div_form_final_temps{
   max-width: 500px;
 }
+.delete_temp {
+  border: none;
+  color: var(--azul-oscuro);
+  background-color: var(--blanco);
+  cursor: pointer;
+}
 
-@media screen and (max-widht: 464px) {
 
+@media screen and (max-width: 574px) {
+  .Form_container {
+    padding: 20px;
+  }
+  .form_title {
+    font-size: 16px;
+  }
+  .form {
+    gap: 30px;
+  }
+  label {
+    font-size: 13px;
+  }
+  .div_input {
+    padding: 4px 4px;
+  }
+  .div_inputs_dobles {
+    gap: 10px;
+  }
+  .unidad {
+    font-size: 11px;
+  }
+  .form_input {
+    font-size: 13px;
+  }
+  .form_input::placeholder {
+    font-size: 13px;
+  }
+  .ul_temp {
+    font-size: 12px;
+  }
+  .li_temp {
+    display: flex;
+    gap: 5px;
+    border: 1px solid var(--naranja);
+    padding: 4px;
+    border-radius: 4px;
+  }
+  .select_form {
+    font-size: 14px;
+  }
+  .submit {
+    font-size: 20px;
+  }
+
+  .dato_incorrecto {
+    margin-left: 15px;
+    color: #DF4545;
+    font-size: 9px;
+    font-weight: 700;
+  }
+  .div_form_final_temps{
+    max-width: 500px;
+  }
+  .delete_temp {
+    border: none;
+    color: var(--azul-oscuro);
+    background-color: var(--blanco);
+    cursor: pointer;
+  }
 }

@@ -38,7 +38,9 @@ function SearchBar() {
         <div className="div_nameResult">
           {nameDog && dogsHome.slice(0, 10).map((d, i) => {
             return (
-              <Link className="results" to={`/home/${d.id}`} key={i}>{d.name}</Link>
+              <div>
+                <Link className="results" to={`/home/${d.id}`} key={i}>{d.name}</Link>
+              </div>
             )
           })}
         </div>

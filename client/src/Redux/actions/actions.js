@@ -97,7 +97,6 @@ export const filterCreated = (payload) => {
 }
 
 export const orderByName = (payload) => {
-  console.log(payload)
   return {
     type: ORDER_BY_NAME,
     payload
@@ -105,7 +104,6 @@ export const orderByName = (payload) => {
 }
 
 export const orderByWeight = (payload) => {
-  console.log(payload)
   return {
     type: ORDER_BY_WEIGHT,
     payload
