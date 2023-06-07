@@ -1,4 +1,5 @@
 # Individual Project - Henry Dogs
+# Actualmente no funciona por que el backend que lo deployaba en railway, ya no ofrece un plan gratuito
 
 ![app](https://raw.githubusercontent.com/villalb4/Dogs/main/app-readme.png)
 
